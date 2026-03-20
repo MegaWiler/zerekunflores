@@ -2,42 +2,24 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Para Eve 👋</title>
-    <style>
-        body {
-            background-color: #000;
-            color: white;
-            font-family: 'Segoe UI', sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            margin: 0;
-            text-align: center;
-        }
-        h1 { font-size: 3rem; margin-bottom: 10px; }
-        img { max-width: 250px; border-radius: 20px; margin-bottom: 20px; box-shadow: 0 0 20px rgba(255,255,255,0.2); }
-        .btn-azul {
-            background-color: #0022ff;
-            color: white;
-            border: none;
-            padding: 15px 40px;
-            font-size: 1.2rem;
-            border-radius: 50px;
-            cursor: pointer;
-            font-weight: bold;
-            text-decoration: none;
-            transition: transform 0.2s, background 0.2s;
-        }
-        .btn-azul:hover { transform: scale(1.1); background-color: #001acc; }
-    </style>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="img/flowers.png" type="image/x-icon">
+    <title>Flowers</title>
 </head>
 <body>
-    <h1>¡HOLA! 👋</h1>
-    <img src="img/mapache flor.jpg" alt="Mapache">
-    <h2 style="padding: 0 20px;">ESTE PEQUEÑO DETALLE ES PARA TI EVE :)</h2>
-    <a href="flower.html" class="btn-azul">PRESIONA AQUÍ</a>
+    <div class="greetings">
+        <span>H</span><span>o</span><span>l</span><span>a</span><span>!</span>
+        <img src="img/mapache flor.jpg" alt="Mapache saludando" style="height: 300px; vertical-align: middle; margin-left: 10px;">
+    </div>
+    <div class="description">
+        <span>ESTE PEQUEÑO DETALLE ES PARA TI EVE :)</span>
+    </div>
+    <div class="button">
+        <button class="botones">
+            <a href="flower.html" style="color: #fff; text-decoration: none;">PRESIONA AQUÍ</a>
+        </button>
+    </div>
 </body>
 </html>
