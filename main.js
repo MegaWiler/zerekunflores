@@ -1,18 +1,10 @@
-// 1. REFERENCIAS A ELEMENTOS
-var audio = document.getElementById("player");
-var lyrics = document.querySelector("#lyrics");
+// 1. REFERENCIAS
+const audio = document.getElementById("player");
+const lyrics = document.querySelector("#lyrics");
+const titulo = document.querySelector(".titulo");
 
-// 2. ACTIVAR SONIDO AL HACER CLIC (Obligatorio por seguridad del navegador)
-document.addEventListener('click', function() {
-    audio.play().then(() => {
-        console.log("Reproduciendo desde la carpeta sound/musica.mp3");
-    }).catch(err => {
-        console.log("Error: El archivo no se encuentra o el navegador lo bloqueó", err);
-    });
-}, { once: true });
-
-// 3. LETRA COMPLETA DE WATER FOUNTAIN (Tiempos ajustados)
-var lyricsData = [
+// 2. CONFIGURACIÓN DE LA LETRA (Water Fountain - Alec Benjamin)
+const lyricsData = [
   { text: "She told me that she loved me by the water fountain", time: 14 },
   { text: "She told me that she loved me and she didn't love him", time: 17 },
   { text: "And that was really lovely 'cause it was innocent", time: 21 },
@@ -50,15 +42,13 @@ var lyricsData = [
   { text: "Too young... I was too young", time: 166 }
 ];
 
-// 4. FUNCIÓN PARA ACTUALIZAR EL KARAOKE
+// 3. FUNCIÓN PARA SINCRONIZAR LETRAS
 function updateLyrics() {
   var time = Math.floor(audio.currentTime);
-  
-  // Buscamos la línea que corresponde al tiempo actual
   var currentLine = lyricsData.find(
     (line, index) => {
-        let nextLine = lyricsData[index + 1];
-        return time >= line.time && (!nextLine || time < nextLine.time);
+      let nextLine = lyricsData[index + 1];
+      return time >= line.time && (!nextLine || time < nextLine.time);
     }
   );
 
@@ -70,19 +60,30 @@ function updateLyrics() {
   }
 }
 
-// Actualización constante
-setInterval(updateLyrics, 300);
+// 4. CONTROLADOR DE REPRODUCCIÓN (EL DESPERTADOR)
+function iniciarTodo() {
+  console.log("Intentando iniciar audio...");
+  audio.muted = false; // Asegurar que no esté silenciado
+  audio.play().then(() => {
+    console.log("Música reproduciéndose correctamente.");
+  }).catch((error) => {
+    console.error("Error al reproducir el archivo:", error);
+  });
+}
 
-// 5. FUNCIÓN PARA OCULTAR EL TÍTULO INICIAL
+// Escuchar clic en cualquier parte de la pantalla para iniciar
+document.addEventListener("click", iniciarTodo, { once: true });
+
+// 5. OCULTAR TÍTULO INICIAL
 function ocultarTitulo() {
-  var titulo = document.querySelector(".titulo");
   if (titulo) {
     titulo.style.animation = "fadeOut 3s ease-in-out forwards";
-    setTimeout(function () {
+    setTimeout(() => {
       titulo.style.display = "none";
     }, 3000);
   }
 }
 
-// Se oculta a los 10 segundos para no tapar el karaoke
-setTimeout(ocultarTitulo, 10000);
+// Ejecutar actualizaciones
+setInterval(updateLyrics, 300);
+setTimeout(ocultarTitulo, 10000); // Se oculta a los 10 segundos
