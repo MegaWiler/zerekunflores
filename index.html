@@ -25,10 +25,9 @@
             border-radius: 30px;
             border: 2px solid #FFD700;
             font-weight: bold;
-            text-shadow: 1px 1px 2px #000;
         }
 
-        /* Pantalla de Inicio */
+        /* Pantalla de Inicio (Hola y Mapache) */
         .inicio-container {
             display: flex;
             flex-direction: column;
@@ -56,29 +55,43 @@
             font-weight: bold;
             box-shadow: 0 0 25px rgba(0, 34, 255, 0.6);
             margin-top: 20px;
-            transition: transform 0.2s;
         }
 
-        .btn-azul:active {
-            transform: scale(0.95);
+        /* Frase especial después del clic */
+        #mensaje-especial {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #fff;
+            text-align: center;
+            font-size: 1.8rem;
+            width: 80%;
+            z-index: 5000;
+            display: none;
+            font-family: 'Segoe UI', sans-serif;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
         }
 
-        /* Forzar visualización de flores tras el clic */
-        body.flowers-visible .flowers {
-            display: block !important;
-            visibility: visible !important;
-            opacity: 1 !important;
+        @keyframes fadeOutText {
+            to { opacity: 0; visibility: hidden; }
         }
     </style>
 </head>
 <body class="not-loaded">
 
     <div id="pantalla-inicio" class="inicio-container">
+        <h1 style="font-family: sans-serif; margin-bottom: 10px;">¡HOLA! 👋</h1>
         <img src="img/mapache flor.jpg" alt="Mapache" style="max-width: 250px; border-radius: 20px;">
         <h2 style="font-family: sans-serif; margin-top: 20px; text-align: center; padding: 0 20px;">
             ESTE PEQUEÑO DETALLE ES PARA TI EVE :)
         </h2>
         <button id="btn-iniciar" class="btn-azul">PRESIONA AQUÍ</button>
+    </div>
+
+    <div id="mensaje-especial">
+        Estas flores amarillas son un reflejo de la alegría que traes a mi vida. <br><br>
+        Gracias por las risas que me sacas con tus ocurrencias. 🌻
     </div>
 
     <audio id="player" src="sound/musica.mp3"></audio>
@@ -89,46 +102,19 @@
 
     <div class="night"></div>
     <div class="flowers">
-        <div class="flower flower--1">
-            <div class="flower__leafs flower__leafs--1">
-                <div class="flower__leaf flower__leaf--1"></div>
-                <div class="flower__leaf flower__leaf--2"></div>
-                <div class="flower__leaf flower__leaf--3"></div>
-                <div class="flower__leaf flower__leaf--4"></div>
-                <div class="flower__white-circle"></div>
-            </div>
-            <div class="flower__line"></div>
-        </div>
-        <div class="flower flower--2">
-            <div class="flower__leafs flower__leafs--2">
-                <div class="flower__leaf flower__leaf--1"></div>
-                <div class="flower__leaf flower__leaf--2"></div>
-                <div class="flower__leaf flower__leaf--3"></div>
-                <div class="flower__leaf flower__leaf--4"></div>
-                <div class="flower__white-circle"></div>
-            </div>
-            <div class="flower__line"></div>
-        </div>
-        <div class="flower flower--3">
-            <div class="flower__leafs flower__leafs--3">
-                <div class="flower__leaf flower__leaf--1"></div>
-                <div class="flower__leaf flower__leaf--2"></div>
-                <div class="flower__leaf flower__leaf--3"></div>
-                <div class="flower__leaf flower__leaf--4"></div>
-                <div class="flower__white-circle"></div>
-            </div>
-            <div class="flower__line"></div>
-        </div>
+        <div class="flower flower--1"><div class="flower__leafs"><div class="flower__leaf flower__leaf--1"></div><div class="flower__white-circle"></div></div><div class="flower__line"></div></div>
+        <div class="flower flower--2"><div class="flower__leafs"><div class="flower__leaf flower__leaf--1"></div><div class="flower__white-circle"></div></div><div class="flower__line"></div></div>
+        <div class="flower flower--3"><div class="flower__leafs"><div class="flower__leaf flower__leaf--1"></div><div class="flower__white-circle"></div></div><div class="flower__line"></div></div>
     </div>
 
     <script>
         const btn = document.getElementById('btn-iniciar');
         const pantalla = document.getElementById('pantalla-inicio');
+        const mensaje = document.getElementById('mensaje-especial');
         const audio = document.getElementById('player');
         const lyricsCont = document.getElementById('lyric-container');
         const lyricsText = document.getElementById('lyrics');
 
-        // Letra sincronizada (Water Fountain)
         const lyricsData = [
             { text: "She told me that she loved me by the water fountain", time: 14.36 },
             { text: "She told me that she loved me and she didn't love him", time: 17.62 },
@@ -138,28 +124,34 @@
         ];
 
         btn.addEventListener('click', () => {
-            // 1. Iniciar música
-            audio.play().catch(e => console.log("Error audio:", e));
+            audio.play();
             
-            // 2. Desvanecer pantalla inicial
+            // Ocultar inicio
             pantalla.style.opacity = '0';
             
             setTimeout(() => {
                 pantalla.style.display = 'none';
-                lyricsCont.style.display = 'block';
                 
-                // 3. Activar flores (Quitamos clases de bloqueo y añadimos la de visibilidad)
-                document.body.classList.remove("not-loaded");
-                document.body.classList.remove("container");
-                document.body.classList.add("flowers-visible");
+                // Mostrar frase romántica por 5 segundos
+                mensaje.style.display = 'block';
+                
+                setTimeout(() => {
+                    // Desvanecer frase y mostrar flores + karaoke
+                    mensaje.style.animation = "fadeOutText 2s forwards";
+                    
+                    setTimeout(() => {
+                        mensaje.style.display = 'none';
+                        lyricsCont.style.display = 'block';
+                        document.body.classList.remove("not-loaded");
+                        document.body.classList.add("flowers-visible");
+                    }, 2000);
+                }, 5000); // Duración de la frase en pantalla
             }, 1000);
         });
 
-        // Sincronizar Karaoke
         audio.addEventListener('timeupdate', () => {
             let time = audio.currentTime;
             let line = lyricsData.find((l, i) => time >= l.time && (!lyricsData[i+1] || time < lyricsData[i+1].time));
-            
             if (line) {
                 lyricsText.innerText = line.text;
                 lyricsText.style.opacity = 1;
