@@ -5,16 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="icon" href="img/flowers.png" type="image/x-icon">
-    <title>Flores para Eve 🌻</title>
+    <title>Para Eve :)</title>
 </head>
 <body class="container">
-    <!-- Cambia 'tracker.mp3' por el nombre exacto de tu archivo de audio -->
-    <audio id="player" src="tracker.mp3" preload="auto"></audio>
+    <!-- Pantalla de Bienvenida (Overlay) -->
+    <div id="overlay">
+        <div class="welcome-container">
+            <div class="header-row">
+                <h1 class="hola-text">Hola!</h1>
+                <img src="img/mapache.jpg" alt="Mapache" class="raccoon-img">
+            </div>
+            <p class="dedicatoria-mini">ESTE PEQUEÑO DETALLE ES PARA TI EVE :)</p>
+            <button id="start-btn">PRESIONA AQUÍ</button>
+        </div>
+    </div>
+
+    <!-- Audio (Asegúrate que la ruta sea correcta) -->
+    <audio id="player" src="sound/ChristianBasso&HaienQiu-Flowers.mp3"></audio>
 
     <div class="night"></div>
 
-    <h1 class="titulo-dedicatoria">
+    <h1 class="titulo-principal" id="main-title" style="display: none;">
       Estas flores amarillas son un reflejo de la alegría que traes a mi vida. <br>
       Gracias por las risas que me sacas con tus ocurrencias.
     </h1>
@@ -23,7 +34,7 @@
         <div id="lyrics"></div>
     </div>
 
-    <div class="flowers">
+    <div class="flowers" id="flower-garden" style="display: none;">
         <!-- Flor 1 -->
         <div class="flower flower--1">
             <div class="flower__leafs flower__leafs--1">
@@ -50,45 +61,10 @@
                 <div class="flower__line__leaf flower__line__leaf--6"></div>
             </div>
         </div>
-
-        <!-- Flor 2 -->
-        <div class="flower flower--2">
-            <div class="flower__leafs flower__leafs--2">
-                <div class="flower__leaf flower__leaf--1"></div>
-                <div class="flower__leaf flower__leaf--2"></div>
-                <div class="flower__leaf flower__leaf--3"></div>
-                <div class="flower__leaf flower__leaf--4"></div>
-                <div class="flower__white-circle"></div>
-            </div>
-            <div class="flower__line">
-                <div class="flower__line__leaf flower__line__leaf--1"></div>
-                <div class="flower__line__leaf flower__line__leaf--2"></div>
-            </div>
-        </div>
-
-        <!-- Flor 3 -->
-        <div class="flower flower--3">
-            <div class="flower__leafs flower__leafs--3">
-                <div class="flower__leaf flower__leaf--1"></div>
-                <div class="flower__leaf flower__leaf--2"></div>
-                <div class="flower__leaf flower__leaf--3"></div>
-                <div class="flower__leaf flower__leaf--4"></div>
-                <div class="flower__white-circle"></div>
-            </div>
-            <div class="flower__line">
-                <div class="flower__line__leaf flower__line__leaf--1"></div>
-                <div class="flower__line__leaf flower__line__leaf--2"></div>
-            </div>
-        </div>
-        
-        <!-- El césped y decoración -->
-        <div class="growing-grass">
-            <div class="flower__grass flower__grass--1"></div>
-            <div class="flower__grass flower__grass--2"></div>
-        </div>
+        <!-- (Puedes repetir más flores aquí si lo deseas) -->
     </div>
 
-    <script src="anim.js"></script>
     <script src="main.js"></script>
+    <script src="anim.js"></script>
 </body>
 </html>
