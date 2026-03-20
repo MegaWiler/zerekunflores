@@ -1,23 +1,52 @@
-/* Limpieza de márgenes */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+:root {
+  --color-bg: #000222;
+  --color-leaf: #f7ff08;
+  --color-stem: #14757a;
 }
 
-/* Asegurar que las flores se vean bien en móviles */
-@media screen and (max-width: 600px) {
-    .flower {
-        margin: 0 10px;
-        transform: scale(0.7);
-    }
-    #lyrics {
-        font-size: 1.2rem;
-    }
+body {
+  background-color: var(--color-bg);
+  margin: 0;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  height: 100vh;
 }
 
-/* Clase para ocultar el título después de un tiempo */
-.fade-out {
-    opacity: 0;
-    transition: opacity 2s ease-in-out;
+.flowers {
+  position: relative;
+  transform: scale(0.8);
+  z-index: 5;
+}
+
+.flower {
+  position: absolute;
+  bottom: 10vmin;
+  transform-origin: bottom center;
+}
+
+.flower--1 { left: 10vmin; animation: moving-flower-1 4s linear infinite; }
+.flower--2 { left: -10vmin; animation: moving-flower-2 4s linear infinite; }
+.flower--3 { left: -25vmin; animation: moving-flower-3 4s linear infinite; }
+
+.flower__leaf {
+  position: absolute;
+  bottom: 0;
+  width: 8vmin;
+  height: 11vmin;
+  border-radius: 51% 49% 47% 53% / 44% 45% 55% 56%;
+  background-color: var(--color-leaf);
+  transform-origin: bottom center;
+}
+
+.flower__line {
+  height: 50vmin;
+  width: 1.5vmin;
+  background-image: linear-gradient(to top, #14757a, #39c6d6);
+}
+
+@keyframes moving-flower-1 {
+  0%, 100% { transform: rotate(3deg); }
+  50% { transform: rotate(-3deg); }
 }
