@@ -1,13 +1,10 @@
-// Quitar clase al cargar
 window.onload = () => {
     document.body.classList.remove("container");
 };
 
-// Referencias a elementos
 var audio = document.getElementById("player");
 var lyrics = document.querySelector("#lyrics");
 
-// Letra sincronizada de Alec Benjamin - Water Fountain
 var lyricsData = [
   { text: "She told me that she loved me by the water fountain", time: 14.36 },
   { text: "She told me that she loved me and she didn't love him", time: 17.62 },
@@ -26,39 +23,52 @@ var lyricsData = [
   { text: "I was too young", time: 66.86 },
   { text: "I should've built a home with a fountain for us", time: 71.36 },
   { text: "The moment that she told me that she was in love", time: 75.11 },
-  { text: "Too young... I was too young", time: 78.60 }
+  { text: "Too young... I was too young", time: 78.60 },
+  { text: "And if she ever goes back to the water fountain", time: 100.62 },
+  { text: "The handle will be broken and the rust set in", time: 103.87 },
+  { text: "But my hand, it will be open and I'll try to fix it", time: 107.37 },
+  { text: "My heart, it will be open and I'll try to give it", time: 111.12 },
+  { text: "Now I'm grabbing her hips, and pulling her in", time: 114.34 },
+  { text: "Kissing her lips, and whispering in her ear", time: 117.86 },
+  { text: "And I know that it's only a wish", time: 121.62 },
+  { text: "And that we're not standing by the water fountain", time: 125.35 },
+  { text: "She couldn't be at home in the night time", time: 143.85 },
+  { text: "Because it made her feel alone", time: 146.11 },
+  { text: "But at that time she was too young", time: 148.61 },
+  { text: "I was too young", time: 153.12 },
+  { text: "I should've built a home with a fountain for us", time: 157.35 },
+  { text: "The moment that she told me that she was in love", time: 161.10 },
+  { text: "Too young... I was too young", time: 164.35 },
+  { text: "I should've built a home with a fountain for us", time: 186.86 },
+  { text: "The moment that she told me that she was in love", time: 189.62 },
+  { text: "Too young... I was too young 🌻", time: 193.16 }
 ];
 
-// Función de actualización para modo Karaoke
 function updateLyrics() {
-  var time = audio.currentTime; // Usar tiempo exacto sin redondear
-  var currentLine = lyricsData.find(
-    (line, index) => {
-        let nextLine = lyricsData[index + 1];
-        return time >= line.time && (!nextLine || time < nextLine.time);
-    }
-  );
+  var time = audio.currentTime;
+  var currentLine = lyricsData.find((line, index) => {
+    let nextLine = lyricsData[index + 1];
+    return time >= line.time && (!nextLine || time < nextLine.time);
+  });
 
   if (currentLine) {
-    lyrics.style.opacity = 1;
-    lyrics.innerHTML = currentLine.text;
+    if (lyrics.innerHTML !== currentLine.text) {
+        lyrics.innerHTML = currentLine.text;
+        lyrics.style.opacity = 1;
+    }
   } else {
-    lyrics.style.opacity = 0;
     lyrics.innerHTML = "";
+    lyrics.style.opacity = 0;
   }
 }
 
-// Intervalo de 100ms para una sincronización suave
 setInterval(updateLyrics, 100);
 
-// Función para ocultar el título después de un tiempo
 function ocultarTitulo() {
   var titulo = document.querySelector(".titulo");
   if (titulo) {
     titulo.style.animation = "fadeOut 3s ease-in-out forwards";
-    setTimeout(function () {
-      titulo.style.display = "none";
-    }, 3000);
+    setTimeout(() => { titulo.style.display = "none"; }, 3000);
   }
 }
-setTimeout(ocultarTitulo, 216000); // 216 segundos
+setTimeout(ocultarTitulo, 216000);
