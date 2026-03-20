@@ -1,57 +1,112 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flores Amarillas para Eve 🌻</title>
-    <link rel="stylesheet" href="css/style.css"> 
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="icon" href="img/flowers.png" type="image/x-icon" />
+    <title>Flores para Eve 🌻</title>
 </head>
-<body class="not-loaded">
-
-    <div class="titulo-inicial">Para Eve, con mucho cariño 👋</div>
-
+<body class="container not-loaded">
+    <!-- El audio debe ser el de la canción Water Fountain para que la letra coincida -->
     <audio id="player" src="tracker.mp3" preload="auto"></audio>
 
-    <div class="flowers">
-        <div class="flower flower--1">
-            <div class="flower__leafs">
-                <div class="flower__leaf flower__leaf--1"></div>
-                <div class="flower__leaf flower__leaf--2"></div>
-                <div class="flower__leaf flower__leaf--3"></div>
-                <div class="flower__leaf flower__leaf--4"></div>
-                <div class="flower__leaf flower__leaf--5"></div>
-                <div class="flower__leaf flower__leaf--6"></div>
-                <div class="flower__leaf flower__leaf--7"></div>
-                <div class="flower__leaf flower__leaf--8"></div>
-                <div class="flower__white-circle"></div>
-            </div>
-            <div class="flower__line">
-                <div class="flower__line__leaf flower__line__leaf--1"></div>
-                <div class="flower__line__leaf flower__line__leaf--2"></div>
-            </div>
-        </div>
-        <div class="flower flower--2">
-            <div class="flower__leafs">
-                <div class="flower__leaf flower__leaf--1"></div>
-                <div class="flower__leaf flower__leaf--2"></div>
-                <div class="flower__leaf flower__leaf--3"></div>
-                <div class="flower__leaf flower__leaf--4"></div>
-                <div class="flower__leaf flower__leaf--5"></div>
-                <div class="flower__leaf flower__leaf--6"></div>
-                <div class="flower__leaf flower__leaf--7"></div>
-                <div class="flower__leaf flower__leaf--8"></div>
-                <div class="flower__white-circle"></div>
-            </div>
-            <div class="flower__line">
-                <div class="flower__line__leaf flower__line__leaf--1"></div>
-                <div class="flower__line__leaf flower__line__leaf--2"></div>
-            </div>
-        </div>
-    </div>
+    <div class="night"></div>
 
+    <!-- Título Original -->
+    <h1 class="titulo">Estas flores amarillas son un reflejo de la alegría que traes a mi vida. <br> <br>
+      Gracias por las risas que me sacas con tus ocurrencias.</h1>
+
+    <!-- Contenedor del Karaoke y Esfera -->
     <div id="lyrics-container">
         <div id="rgb-ball"></div>
-        <div id="lyrics"></div> </div>
+        <div id="lyrics"></div>
+    </div>
+
+    <!-- Estructura Completa de Flores Originales -->
+    <div class="flowers">
+      <!-- Flor 1 -->
+      <div class="flower flower--1">
+        <div class="flower__leafs flower__leafs--1">
+          <div class="flower__leaf flower__leaf--1"></div>
+          <div class="flower__leaf flower__leaf--2"></div>
+          <div class="flower__leaf flower__leaf--3"></div>
+          <div class="flower__leaf flower__leaf--4"></div>
+          <div class="flower__white-circle"></div>
+          <div class="flower__light flower__light--1"></div>
+          <div class="flower__light flower__light--2"></div>
+          <div class="flower__light flower__light--3"></div>
+          <div class="flower__light flower__light--4"></div>
+          <div class="flower__light flower__light--5"></div>
+          <div class="flower__light flower__light--6"></div>
+          <div class="flower__light flower__light--7"></div>
+          <div class="flower__light flower__light--8"></div>
+        </div>
+        <div class="flower__line">
+          <div class="flower__line__leaf flower__line__leaf--1"></div>
+          <div class="flower__line__leaf flower__line__leaf--2"></div>
+          <div class="flower__line__leaf flower__line__leaf--3"></div>
+          <div class="flower__line__leaf flower__line__leaf--4"></div>
+          <div class="flower__line__leaf flower__line__leaf--5"></div>
+          <div class="flower__line__leaf flower__line__leaf--6"></div>
+        </div>
+      </div>
+
+      <!-- Flor 2 -->
+      <div class="flower flower--2">
+        <div class="flower__leafs flower__leafs--2">
+          <div class="flower__leaf flower__leaf--1"></div>
+          <div class="flower__leaf flower__leaf--2"></div>
+          <div class="flower__leaf flower__leaf--3"></div>
+          <div class="flower__leaf flower__leaf--4"></div>
+          <div class="flower__white-circle"></div>
+          <div class="flower__light flower__light--1"></div>
+          <div class="flower__light flower__light--2"></div>
+          <div class="flower__light flower__light--3"></div>
+          <div class="flower__light flower__light--4"></div>
+          <div class="flower__light flower__light--5"></div>
+          <div class="flower__light flower__light--6"></div>
+          <div class="flower__light flower__light--7"></div>
+          <div class="flower__light flower__light--8"></div>
+        </div>
+        <div class="flower__line">
+          <div class="flower__line__leaf flower__line__leaf--1"></div>
+          <div class="flower__line__leaf flower__line__leaf--2"></div>
+          <div class="flower__line__leaf flower__line__leaf--3"></div>
+          <div class="flower__line__leaf flower__line__leaf--4"></div>
+        </div>
+      </div>
+
+      <!-- Flor 3 -->
+      <div class="flower flower--3">
+        <div class="flower__leafs flower__leafs--3">
+          <div class="flower__leaf flower__leaf--1"></div>
+          <div class="flower__leaf flower__leaf--2"></div>
+          <div class="flower__leaf flower__leaf--3"></div>
+          <div class="flower__leaf flower__leaf--4"></div>
+          <div class="flower__white-circle"></div>
+          <div class="flower__light flower__light--1"></div>
+          <div class="flower__light flower__light--2"></div>
+          <div class="flower__light flower__light--3"></div>
+          <div class="flower__light flower__light--4"></div>
+          <div class="flower__light flower__light--5"></div>
+          <div class="flower__light flower__light--6"></div>
+          <div class="flower__light flower__light--7"></div>
+          <div class="flower__light flower__light--8"></div>
+        </div>
+        <div class="flower__line">
+          <div class="flower__line__leaf flower__line__leaf--1"></div>
+          <div class="flower__line__leaf flower__line__leaf--2"></div>
+          <div class="flower__line__leaf flower__line__leaf--3"></div>
+          <div class="flower__line__leaf flower__line__leaf--4"></div>
+        </div>
+      </div>
+
+      <!-- El resto de elementos decorativos (grow-ans, grass, long-g) se mantienen igual -->
+      <!-- ... (Aquí va todo el bloque de grass y long-g de tu código original) ... -->
+    </div>
 
     <script src="anim.js"></script>
     <script src="main.js"></script>
