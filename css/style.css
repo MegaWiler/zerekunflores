@@ -1,173 +1,50 @@
-/* --- FONDO DE ESTRELLAS Y CONFIGURACIÓN GENERAL --- */
-body {
-    background-color: #000;
-    background-image: 
-        radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 10px),
-        radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 5px);
-    background-size: 550px 550px, 350px 350px;
-    margin: 0;
-    height: 100vh;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: flex-end; /* Las flores nacen de abajo */
-}
-
-/* --- TÍTULO INICIAL --- */
-.titulo-inicial {
-    position: fixed;
-    top: 30px;
-    width: 100%;
-    text-align: center;
-    color: #fff;
-    font-family: 'Arial', sans-serif;
-    font-size: 1.5rem;
-    text-shadow: 0 0 10px #fff;
-    z-index: 100;
-}
-
-/* --- KARAOKE Y BOLA RGB --- */
+/* Posicionamiento del Karaoke sobre las flores */
 #lyrics-container {
     position: fixed;
-    bottom: 40px;
+    bottom: 80px; /* Un poco más arriba para que no lo tape el pasto */
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    z-index: 200;
+    z-index: 999; /* Por encima de todo */
 }
 
-/* La esfera RGB: tamaño, forma y gradiente animado */
 #rgb-ball {
-    width: 25px;
-    height: 25px;
+    width: 20px;
+    height: 20px;
     border-radius: 50%;
-    background: linear-gradient(45deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff);
-    background-size: 200% 200%;
-    box-shadow: 0 0 15px currentColor;
-    opacity: 0; /* JS la activa al clic */
-    animation: rgbShift 3s linear infinite;
-    position: relative; /* Importante para el salto */
-    transition: left 0.1s ease-out, opacity 0.3s; /* Movimiento suave entre palabras */
-    margin-bottom: 10px;
+    background: radial-gradient(circle, #fff, #ffeb3b, #ff5722);
+    box-shadow: 0 0 15px #ffeb3b;
+    position: relative;
+    left: 0;
+    transition: left 0.2s ease-out; /* Movimiento suave entre palabras */
 }
 
 #lyrics {
-    color: #00ffff; /* Letra Cian */
-    font-family: 'Arial', sans-serif;
-    font-size: 1.8rem;
-    font-weight: bold;
+    margin-top: 10px;
+    font-size: 1.5rem;
+    color: #00ffff;
     text-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
-    text-align: center;
-    min-height: 2.5rem;
-    opacity: 0;
+    font-family: 'Arial', sans-serif;
+    font-weight: bold;
 }
 
-/* Estilos para las palabras (se añaden por JS) */
 .word {
-    position: relative;
     display: inline-block;
-    padding: 0 4px; /* Separación entre palabras */
+    padding: 0 5px;
 }
 
-/* --- DISEÑO DE LA FLOR ORGÁNICA (De tu imagen) --- */
-.flowers {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    bottom: -10px;
-}
-
-.flower {
-    position: relative;
-    margin: 0 30px;
-    transition: transform 3s ease-out; /* Velocidad del brote */
-}
-
-/* Tallo: degradado azulado y hojas orgánicas */
-.flower__line {
-    width: 5px;
-    height: 280px;
-    background-image: linear-gradient(to top, rgba(0,255,255,0.1), #054d5e, #150e50);
-    border-radius: 5px;
-    position: relative;
-}
-
-/* Las hojitas verdes orgánicas en el tallo */
-.flower__line__leaf {
-    position: absolute;
-    width: 15px;
-    height: 15px;
-    background-color: #4caf50;
-    border-radius: 50% 50% 50% 0;
-    opacity: 0.8;
-}
-.flower__line__leaf--1 { top: 30%; left: -10px; transform: rotate(-20deg); }
-.flower__line__leaf--2 { top: 60%; left: 0; transform: rotate(160deg); }
-
-/* Pétalos orgánicos */
-.flower__leafs {
-    position: absolute;
-    top: -280px; /* Ajusta a la punta del tallo */
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-.flower__leaf {
-    position: absolute;
-    width: 60px;
-    height: 60px;
-    background: #ffeb3b; /* Amarillo */
-    background-image: linear-gradient(to top, #fbc02d, #ffeb3b);
-    border-radius: 50% 50% 0 50%;
-    transform-origin: bottom right;
-    opacity: 0.9;
-    /* Efecto de pétalos orgánicos orgánicos y con forma */
-}
-
-/* Distribución de pétalos circulares orgánicos orgánicos */
-.flower__leaf--1 { transform: rotate(0deg) scale(1.1); }
-.flower__leaf--2 { transform: rotate(45deg); }
-.flower__leaf--3 { transform: rotate(90deg) scale(1.1); }
-.flower__leaf--4 { transform: rotate(135deg); }
-.flower__leaf--5 { transform: rotate(180deg) scale(1.1); }
-.flower__leaf--6 { transform: rotate(225deg); }
-.flower__leaf--7 { transform: rotate(270deg) scale(1.1); }
-.flower__leaf--8 { transform: rotate(315deg); }
-
-.flower__white-circle {
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    background: #5d4037;
-    border-radius: 50%;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 10;
-}
-
-/* --- ANIMACIONES --- */
-@keyframes rgbShift {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
-
-/* Animación de salto de la bola (palabra a palabra) */
 .ball-jump {
-    animation: quickJump 0.2s ease-out;
+    animation: ballJump 0.3s ease-out;
 }
 
-@keyframes quickJump {
+@keyframes ballJump {
     0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-15px); }
+    50% { transform: translateY(-20px); }
 }
 
-/* Brote: cuando el body tiene "not-loaded", las flores están abajo */
-.not-loaded .flower {
-    transform: translateY(100vh);
+.titulo {
+    z-index: 1000;
+    font-size: 1.2rem;
+    text-shadow: 0 0 5px #000;
 }
