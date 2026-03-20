@@ -40,14 +40,16 @@ var lyricsData = [
   { text: "Too young... I was too young", time: 166 }
 ];
 
-// Función para activar todo al hacer CLIC en la pantalla
-// Añade esto al final de tu main.js
+var audio = document.getElementById("player");
+
+// FUNCIÓN PARA FORZAR EL SONIDO AL HACER CLIC
 document.addEventListener('click', function() {
-    var audio = document.getElementById("player");
-    audio.play().catch(function(error) {
-        console.log("El navegador bloqueó el audio: ", error);
+    audio.play().then(() => {
+        console.log("La música ha comenzado!");
+    }).catch(error => {
+        console.log("Error al reproducir: ", error);
     });
-}, { once: true }); // Solo se ejecuta la primera vez que hace clic
+}, { once: true }); // 'once: true' hace que solo se active con el primer clic
 
 function updateLyrics() {
   var time = Math.floor(audio.currentTime);
