@@ -1,7 +1,17 @@
+// 1. REFERENCIAS A ELEMENTOS
 var audio = document.getElementById("player");
 var lyrics = document.querySelector("#lyrics");
 
-// Array con la letra completa y tiempos aproximados para "Water Fountain"
+// 2. ACTIVAR SONIDO AL HACER CLIC (Obligatorio por seguridad del navegador)
+document.addEventListener('click', function() {
+    audio.play().then(() => {
+        console.log("Reproduciendo desde la carpeta sound/musica.mp3");
+    }).catch(err => {
+        console.log("Error: El archivo no se encuentra o el navegador lo bloqueó", err);
+    });
+}, { once: true });
+
+// 3. LETRA COMPLETA DE WATER FOUNTAIN (Tiempos ajustados)
 var lyricsData = [
   { text: "She told me that she loved me by the water fountain", time: 14 },
   { text: "She told me that she loved me and she didn't love him", time: 17 },
@@ -40,20 +50,11 @@ var lyricsData = [
   { text: "Too young... I was too young", time: 166 }
 ];
 
-var audio = document.getElementById("player");
-
-// FUNCIÓN PARA FORZAR EL SONIDO AL HACER CLIC
-document.addEventListener('click', function() {
-    audio.play().then(() => {
-        console.log("La música ha comenzado!");
-    }).catch(error => {
-        console.log("Error al reproducir: ", error);
-    });
-}, { once: true }); // 'once: true' hace que solo se active con el primer clic
-
+// 4. FUNCIÓN PARA ACTUALIZAR EL KARAOKE
 function updateLyrics() {
   var time = Math.floor(audio.currentTime);
-  // Buscamos la línea actual (se queda visible 4 segundos o hasta la siguiente)
+  
+  // Buscamos la línea que corresponde al tiempo actual
   var currentLine = lyricsData.find(
     (line, index) => {
         let nextLine = lyricsData[index + 1];
@@ -69,15 +70,19 @@ function updateLyrics() {
   }
 }
 
-// Intervalo más rápido para mayor precisión
+// Actualización constante
 setInterval(updateLyrics, 300);
 
-// Ocultar el título de las flores amarillas para que no estorbe
+// 5. FUNCIÓN PARA OCULTAR EL TÍTULO INICIAL
 function ocultarTitulo() {
   var titulo = document.querySelector(".titulo");
   if (titulo) {
     titulo.style.animation = "fadeOut 3s ease-in-out forwards";
-    setTimeout(() => { titulo.style.display = "none"; }, 3000);
+    setTimeout(function () {
+      titulo.style.display = "none";
+    }, 3000);
   }
 }
+
+// Se oculta a los 10 segundos para no tapar el karaoke
 setTimeout(ocultarTitulo, 10000);
