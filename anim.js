@@ -1,6 +1,4 @@
+// Opcional: Pequeña animación de entrada para el título
 window.onload = () => {
-    const c = setTimeout(() => {
-      document.body.classList.remove("not-loaded");
-      clearTimeout(c);
-    }, 1000);
+    console.log("Proyecto cargado. Esperando interacción.");
 };
