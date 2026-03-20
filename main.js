@@ -1,8 +1,7 @@
-// main.js
 const audio = document.getElementById("player");
 const lyrics = document.querySelector("#lyrics");
 
-// 1. SINCRONIZACIÓN DE LA LETRA (Water Fountain)
+// 1. LETRA SINCRONIZADA
 const lyricsData = [
   { text: "She told me that she loved me by the water fountain", time: 14 },
   { text: "She told me that she loved me and she didn't love him", time: 17 },
@@ -21,27 +20,25 @@ const lyricsData = [
   { text: "I was too young", time: 66 },
   { text: "I should've built a home with a fountain for us", time: 71 },
   { text: "The moment that she told me that she was in love", time: 75 },
-  { text: "Too young... I was too young 🌻", time: 78 },
-  { text: "Too young, too young, too young", time: 82 },
-  { text: "And if she ever goes back to the water fountain", time: 98 },
-  { text: "The handle will be broken and the rust set in", time: 102 },
-  { text: "But my hand, it will be open and I'll try to fix it", time: 105 },
-  { text: "My heart, it will be open and I'll try to give it", time: 109 },
-  { text: "Now I'm grabbing her hips, and pulling her in", time: 113 },
-  { text: "Kissing her lips, and whispering in her ear", time: 116 },
-  { text: "And I know that it's only a wish", time: 120 },
-  { text: "And that we're not standing by the water fountain", time: 124 },
-  { text: "Too young... too young...", time: 128 }
+  { text: "Too young... I was too young 🌻", time: 78 }
 ];
 
-// 2. FORZAR REPRODUCCIÓN (Importante: Eve debe hacer clic en las flores)
-document.addEventListener("click", () => {
+// 2. FUNCIÓN DE REPRODUCCIÓN FORZADA
+function playMusic() {
+    audio.muted = false; // Quitar silencio
+    audio.volume = 1.0;  // Volumen al máximo
+    
     audio.play().then(() => {
-        console.log("Sonando perfectamente");
-    }).catch(err => console.log("Error de audio:", err));
-}, { once: true });
+        console.log("Reproduciendo track.mp3 con éxito");
+    }).catch(err => {
+        console.error("Error: El navegador sigue bloqueando o no encuentra track.mp3", err);
+    });
+}
 
-// 3. ACTUALIZAR LETRA EN PANTALLA
+// Escuchar el clic en TODA la pantalla para activar el audio
+document.addEventListener("click", playMusic, { once: true });
+
+// 3. ACTUALIZAR LETRAS
 function updateLyrics() {
   let time = Math.floor(audio.currentTime);
   let currentLine = lyricsData.find((line, index) => {
@@ -57,14 +54,13 @@ function updateLyrics() {
   }
 }
 
-// 4. OCULTAR MENSAJE DE TEXTO INICIAL
-function ocultarTitulo() {
+setInterval(updateLyrics, 300);
+
+// 4. OCULTAR TÍTULO
+setTimeout(() => {
   const titulo = document.querySelector(".titulo");
   if (titulo) {
     titulo.style.animation = "fadeOut 3s ease-in-out forwards";
     setTimeout(() => { titulo.style.display = "none"; }, 3000);
   }
-}
-
-setInterval(updateLyrics, 300);
-setTimeout(ocultarTitulo, 10000); // Se borra a los 10 segundos
+}, 10000);
