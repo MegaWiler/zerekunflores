@@ -1,19 +1,62 @@
+/* Estilo del Overlay Inicial */
+#overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.welcome-card {
+    text-align: center;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+.raccoon-img {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    border: 5px solid #00ffff;
+    margin-bottom: 20px;
+    object-fit: cover;
+}
+
+#start-btn {
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    background-color: #007bff; /* Azul */
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 0 20px rgba(0, 123, 255, 0.6);
+    transition: transform 0.2s;
+}
+
+#start-btn:hover {
+    transform: scale(1.1);
+}
+
+/* Estilo de la Frase Superior */
 .titulo-dedicatoria {
     position: absolute;
-    top: 40px;
+    top: 30px;
     width: 100%;
     text-align: center;
     color: white;
-    font-family: 'Georgia', serif;
-    font-size: 1.4rem;
+    font-size: 1.3rem;
     z-index: 100;
-    text-shadow: 0 0 10px rgba(0,0,0,1);
     padding: 0 20px;
 }
 
+/* Karaoke */
 #lyrics-container {
     position: fixed;
-    bottom: 120px;
+    bottom: 110px;
     width: 100%;
     text-align: center;
     z-index: 200;
@@ -21,22 +64,10 @@
 
 #lyrics {
     font-size: 1.8rem;
-    font-family: 'Arial', sans-serif;
-    color: rgba(255, 255, 255, 0.2); /* Letra apagada */
-    font-weight: bold;
+    color: rgba(255, 255, 255, 0.2);
 }
 
 .highlight {
-    color: #ffff00 !important; /* Letra iluminada */
-    text-shadow: 0 0 20px #ffff00;
-    transition: color 0.3s ease;
-}
-
-.night {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle, #1b2735 0%, #090a0f 100%);
-    z-index: 1;
+    color: #ffff00 !important;
+    text-shadow: 0 0 15px #ffff00;
 }
