@@ -1,9 +1,8 @@
-// 1. REFERENCIAS
+// main.js
 const audio = document.getElementById("player");
 const lyrics = document.querySelector("#lyrics");
-const titulo = document.querySelector(".titulo");
 
-// 2. CONFIGURACIÓN DE LA LETRA (Water Fountain - Alec Benjamin)
+// 1. SINCRONIZACIÓN DE LA LETRA (Water Fountain)
 const lyricsData = [
   { text: "She told me that she loved me by the water fountain", time: 14 },
   { text: "She told me that she loved me and she didn't love him", time: 17 },
@@ -32,25 +31,23 @@ const lyricsData = [
   { text: "Kissing her lips, and whispering in her ear", time: 116 },
   { text: "And I know that it's only a wish", time: 120 },
   { text: "And that we're not standing by the water fountain", time: 124 },
-  { text: "Too young, too young, too young", time: 128 },
-  { text: "She couldn't be at home in the night time", time: 142 },
-  { text: "Because it made her feel alone", time: 146 },
-  { text: "But at that time she was too young", time: 149 },
-  { text: "I was too young", time: 153 },
-  { text: "I should've built a home with a fountain for us", time: 158 },
-  { text: "The moment that she told me that she was in love", time: 162 },
-  { text: "Too young... I was too young", time: 166 }
+  { text: "Too young... too young...", time: 128 }
 ];
 
-// 3. FUNCIÓN PARA SINCRONIZAR LETRAS
+// 2. FORZAR REPRODUCCIÓN (Importante: Eve debe hacer clic en las flores)
+document.addEventListener("click", () => {
+    audio.play().then(() => {
+        console.log("Sonando perfectamente");
+    }).catch(err => console.log("Error de audio:", err));
+}, { once: true });
+
+// 3. ACTUALIZAR LETRA EN PANTALLA
 function updateLyrics() {
-  var time = Math.floor(audio.currentTime);
-  var currentLine = lyricsData.find(
-    (line, index) => {
+  let time = Math.floor(audio.currentTime);
+  let currentLine = lyricsData.find((line, index) => {
       let nextLine = lyricsData[index + 1];
       return time >= line.time && (!nextLine || time < nextLine.time);
-    }
-  );
+  });
 
   if (currentLine) {
     lyrics.style.opacity = 1;
@@ -60,30 +57,14 @@ function updateLyrics() {
   }
 }
 
-// 4. CONTROLADOR DE REPRODUCCIÓN (EL DESPERTADOR)
-function iniciarTodo() {
-  console.log("Intentando iniciar audio...");
-  audio.muted = false; // Asegurar que no esté silenciado
-  audio.play().then(() => {
-    console.log("Música reproduciéndose correctamente.");
-  }).catch((error) => {
-    console.error("Error al reproducir el archivo:", error);
-  });
-}
-
-// Escuchar clic en cualquier parte de la pantalla para iniciar
-document.addEventListener("click", iniciarTodo, { once: true });
-
-// 5. OCULTAR TÍTULO INICIAL
+// 4. OCULTAR MENSAJE DE TEXTO INICIAL
 function ocultarTitulo() {
+  const titulo = document.querySelector(".titulo");
   if (titulo) {
     titulo.style.animation = "fadeOut 3s ease-in-out forwards";
-    setTimeout(() => {
-      titulo.style.display = "none";
-    }, 3000);
+    setTimeout(() => { titulo.style.display = "none"; }, 3000);
   }
 }
 
-// Ejecutar actualizaciones
 setInterval(updateLyrics, 300);
-setTimeout(ocultarTitulo, 10000); // Se oculta a los 10 segundos
+setTimeout(ocultarTitulo, 10000); // Se borra a los 10 segundos
