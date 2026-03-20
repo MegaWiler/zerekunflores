@@ -8,27 +8,29 @@
     <link rel="icon" href="img/flowers.png" type="image/x-icon" />
     <title>Flower Karaoke</title>
     <style>
-      /* Barra superior de karaoke con sombreado */
-      #lyric-container {
-        position: fixed;
-        top: 20px;
-        width: 100%;
-        text-align: center;
-        z-index: 9999;
-      }
-      #lyrics {
-        display: inline-block;
-        padding: 10px 20px;
-        background: rgba(0, 0, 0, 0.6); /* Sombreado oscuro solicitado */
-        color: #fff;
-        font-family: Arial, sans-serif;
-        font-size: 1.5rem;
-        border-radius: 10px;
-        min-height: 1.5em;
-        transition: all 0.3s ease;
-        text-shadow: 2px 2px 4px #000;
-      }
-    </style>
+  /* Barra superior de karaoke estilo flores amarillas */
+  #lyric-container {
+    position: fixed;
+    top: 30px;
+    width: 100%;
+    text-align: center;
+    z-index: 9999;
+    pointer-events: none;
+  }
+  #lyrics {
+    display: inline-block;
+    padding: 12px 25px;
+    background: rgba(0, 0, 0, 0.7); /* Sombreado oscuro profundo */
+    color: #FFD700; /* AMARILLO ORO para combinar con las flores */
+    font-family: 'Arial Black', sans-serif;
+    font-size: 1.6rem;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 215, 0, 0.3); /* Bordecito sutil amarillo */
+    transition: all 0.3s ease;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 1);
+    font-weight: bold;
+  }
+</style>
   </head>
   <body class="container">
     <!-- El reproductor usa la nueva canción de Alec Benjamin -->
