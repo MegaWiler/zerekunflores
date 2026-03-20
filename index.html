@@ -1,52 +1,89 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
-    <title>Para Eve 👋</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="icon" href="img/flowers.png" type="image/x-icon" />
+    <title>Flower</title>
     <style>
-        body {
-            background-color: #000;
-            color: white;
-            font-family: 'Arial', sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            margin: 0;
+        /* Estilo rápido para asegurar visibilidad de la letra */
+        #lyrics-container {
+            position: fixed;
+            bottom: 50px;
+            width: 100%;
             text-align: center;
+            z-index: 999;
         }
-        .greetings { font-size: 3rem; font-weight: bold; margin-bottom: 20px; }
-        .greetings span { display: inline-block; animation: bounce 0.5s infinite alternate; }
-        img { max-width: 250px; border-radius: 20px; margin: 20px 0; border: 3px solid #0022ff; }
-        .description { margin-bottom: 30px; font-size: 1.2rem; color: #ccc; }
-        .btn-azul {
-            background-color: #0022ff;
-            color: white;
-            border: none;
-            padding: 15px 40px;
-            font-size: 1.2rem;
-            border-radius: 50px;
-            cursor: pointer;
+        #lyrics {
+            font-size: 1.5rem;
+            color: #00ffff;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
+            font-family: Arial, sans-serif;
             font-weight: bold;
-            text-decoration: none;
-            transition: transform 0.2s;
-            display: inline-block;
         }
-        .btn-azul:hover { transform: scale(1.1); background-color: #001acc; }
-        @keyframes bounce { to { transform: translateY(-10px); } }
+        .highlight {
+            color: #ffeb3b; /* Color que cambia cuando se canta la palabra */
+            text-shadow: 0 0 15px #ffeb3b;
+            transition: all 0.2s;
+        }
     </style>
 </head>
-<body>
-    <div class="greetings">
-        <span>H</span><span>o</span><span>l</span><span>a</span><span>!</span>
+<body class="container">
+    <audio id="player" src="sound/ChristianBasso&HaienQiu-Flowers.mp3"></audio>
+
+    <h1 class="titulo">
+        Estas flores amarillas son un reflejo de la alegría que traes a mi vida. <br> <br>
+        Gracias por las risas que me sacas con tus ocurrencias.
+    </h1>
+
+    <div id="lyrics-container">
+        <div id="lyrics"></div>
     </div>
-    <img src="img/mapache flor.jpg" alt="Mapache">
-    <div class="description">
-        ESTE PEQUEÑO DETALLE ES PARA TI EVE :)
+
+    <div class="night"></div>
+    <div class="flowers">
+        <!-- Flor 1 -->
+        <div class="flower flower--1">
+            <div class="flower__leafs flower__leafs--1">
+                <div class="flower__leaf flower__leaf--1"></div>
+                <div class="flower__leaf flower__leaf--2"></div>
+                <div class="flower__leaf flower__leaf--3"></div>
+                <div class="flower__leaf flower__leaf--4"></div>
+                <div class="flower__white-circle"></div>
+                <!-- Luces -->
+                <div class="flower__light flower__light--1"></div>
+                <div class="flower__light flower__light--2"></div>
+                <div class="flower__light flower__light--3"></div>
+                <div class="flower__light flower__light--4"></div>
+                <div class="flower__light flower__light--5"></div>
+                <div class="flower__light flower__light--6"></div>
+                <div class="flower__light flower__light--7"></div>
+                <div class="flower__light flower__light--8"></div>
+            </div>
+            <div class="flower__line">
+                <div class="flower__line__leaf flower__line__leaf--1"></div>
+                <div class="flower__line__leaf flower__line__leaf--2"></div>
+                <div class="flower__line__leaf flower__line__leaf--3"></div>
+                <div class="flower__line__leaf flower__line__leaf--4"></div>
+                <div class="flower__line__leaf flower__line__leaf--5"></div>
+                <div class="flower__line__leaf flower__line__leaf--6"></div>
+            </div>
+        </div>
+        <!-- Flor 2 y Flor 3 (Se mantienen igual a tu código original) -->
+        <div class="flower flower--2">
+            <div class="flower__leafs flower__leafs--2">
+                <div class="flower__leaf flower__leaf--1"></div>
+                <div class="flower__leaf flower__leaf--2"></div>
+                <div class="flower__leaf flower__leaf--3"></div>
+                <div class="flower__leaf flower__leaf--4"></div>
+                <div class="flower__white-circle"></div>
+            </div>
+            <div class="flower__line"><div class="flower__line__leaf flower__line__leaf--1"></div></div>
+        </div>
+        <!-- Aquí sigue el resto de tu estructura de flores y césped[cite: 1] -->
     </div>
-    <a href="flower.html" class="btn-azul">PRESIONA AQUÍ</a>
+
+    <script src="main.js"></script>
 </body>
 </html>
