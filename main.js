@@ -2,10 +2,10 @@ const audio = document.getElementById("player");
 const lyricsContainer = document.querySelector("#lyrics");
 const rgbBall = document.querySelector("#rgb-ball");
 
-// Variable para rastrear el cambio de frase
+// Variable para rastrear la frase actual
 let currentLineIndex = -1;
 
-// 1. LETRA COMPLETA Y SINCRONIZADA
+// 1. LETRA COMPLETA (Sincronizada con Water Fountain)
 const lyricsData = [
   { text: "She told me that she loved me by the water fountain", time: 14 },
   { text: "She told me that she loved me and she didn't love him", time: 17 },
@@ -34,24 +34,49 @@ const lyricsData = [
   { text: "Kissing her lips, and whispering in her ear", time: 116 },
   { text: "And I know that it's only a wish", time: 120 },
   { text: "And that we're not standing by the water fountain", time: 124 },
-  { text: "Too young, too young, too young", time: 128 },
-  { text: "She couldn't be at home in the night time", time: 142 },
-  { text: "Because it made her feel alone", time: 146 },
-  { text: "But at that time she was too young", time: 149 },
-  { text: "I was too young", time: 153 },
-  { text: "I should've built a home with a fountain for us", time: 158 },
-  { text: "The moment that she told me that she was in love", time: 162 },
-  { text: "Too young... I was too young", time: 166 }
+  { text: "Too young, too young, too young", time: 128 }
 ];
 
-// 2. ACTIVAR TODO CON UN CLIC
+// 2. ACTIVAR CON CLIC
 document.addEventListener("click", () => {
     audio.play().then(() => {
-        if (rgbBall) rgbBall.style.opacity = 1;
-        // Ocultar mensaje de instrucción si existe
-        const inst = document.querySelector(".instruccion-inicio");
-        if(inst) inst.style.display = 'none';
-    }).catch(err => console.log("Error de reproducción:", err));
+        console.log("Música iniciada correctamente.");
+        if (rgbBall) rgbBall.style.opacity = "1";
+        if (lyricsContainer) lyricsContainer.style.opacity = "1";
+    }).catch(err => console.error("Error al reproducir:", err));
 }, { once: true });
 
-// 3. LÓGICA DEL KARAOKE Y SAL
+// 3. ACTUALIZAR LETRA Y BOLA RGB
+function updateKaraoke() {
+    const currentTime = audio.currentTime;
+    
+    // Buscar la frase actual
+    let newLineIndex = -1;
+    for (let i = 0; i < lyricsData.length; i++) {
+        if (currentTime >= lyricsData[i].time) {
+            newLineIndex = i;
+        }
+    }
+
+    // Si la frase cambió
+    if (newLineIndex !== currentLineIndex) {
+        currentLineIndex = newLineIndex;
+
+        if (currentLineIndex !== -1) {
+            // Actualizar texto y forzar visibilidad
+            lyricsContainer.innerHTML = lyricsData[currentLineIndex].text;
+            lyricsContainer.style.opacity = "1";
+
+            // Salto de la bola RGB
+            if (rgbBall) {
+                rgbBall.style.opacity = "1"; // Asegurar que sea visible
+                rgbBall.classList.remove('ball-jump');
+                void rgbBall.offsetWidth; // Reiniciar animación
+                rgbBall.classList.add('ball-jump');
+            }
+        }
+    }
+}
+
+// Intervalo rápido para sincronización perfecta
+setInterval(updateKaraoke, 50);
