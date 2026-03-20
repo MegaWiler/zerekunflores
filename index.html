@@ -2,24 +2,51 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="icon" href="img/flowers.png" type="image/x-icon">
-    <title>Flowers</title>
+    <title>Para Eve 👋</title>
+    <style>
+        body {
+            background-color: #000;
+            color: white;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+        }
+        .greetings { font-size: 3rem; font-weight: bold; margin-bottom: 20px; }
+        .greetings span { display: inline-block; animation: bounce 0.5s infinite alternate; }
+        img { max-width: 250px; border-radius: 20px; margin: 20px 0; border: 3px solid #0022ff; }
+        .description { margin-bottom: 30px; font-size: 1.2rem; color: #ccc; }
+        .btn-azul {
+            background-color: #0022ff;
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            text-decoration: none;
+            transition: transform 0.2s;
+            display: inline-block;
+        }
+        .btn-azul:hover { transform: scale(1.1); background-color: #001acc; }
+        @keyframes bounce { to { transform: translateY(-10px); } }
+    </style>
 </head>
 <body>
     <div class="greetings">
         <span>H</span><span>o</span><span>l</span><span>a</span><span>!</span>
-        <img src="img/mapache flor.jpg" alt="Mapache saludando" style="height: 300px; vertical-align: middle; margin-left: 10px;">
     </div>
+    <img src="img/mapache flor.jpg" alt="Mapache">
     <div class="description">
-        <span>ESTE PEQUEÑO DETALLE ES PARA TI EVE :)</span>
+        ESTE PEQUEÑO DETALLE ES PARA TI EVE :)
     </div>
-    <div class="button">
-        <button class="botones">
-            <a href="flower.html" style="color: #fff; text-decoration: none;">PRESIONA AQUÍ</a>
-        </button>
-    </div>
+    <a href="flower.html" class="btn-azul">PRESIONA AQUÍ</a>
 </body>
 </html>
