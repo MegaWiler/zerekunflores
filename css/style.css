@@ -1,50 +1,41 @@
-/* Posicionamiento del Karaoke sobre las flores */
 #lyrics-container {
     position: fixed;
-    bottom: 80px; /* Un poco más arriba para que no lo tape el pasto */
+    bottom: 120px; /* Súbelo si el pasto lo tapa */
     width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    z-index: 999; /* Por encima de todo */
+    text-align: center;
+    z-index: 1000;
 }
 
 #rgb-ball {
     width: 20px;
     height: 20px;
+    background: radial-gradient(circle, #fff, #ffea00, #ff5722);
+    box-shadow: 0 0 20px #ffea00;
     border-radius: 50%;
-    background: radial-gradient(circle, #fff, #ffeb3b, #ff5722);
-    box-shadow: 0 0 15px #ffeb3b;
     position: relative;
-    left: 0;
-    transition: left 0.2s ease-out; /* Movimiento suave entre palabras */
+    transition: left 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    margin: 0 auto 10px auto;
 }
 
 #lyrics {
-    margin-top: 10px;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     color: #00ffff;
-    text-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
-    font-family: 'Arial', sans-serif;
+    text-shadow: 0 0 15px rgba(0, 255, 255, 0.7);
     font-weight: bold;
+    display: inline-block;
 }
 
 .word {
     display: inline-block;
-    padding: 0 5px;
+    padding: 0 6px;
+    transition: transform 0.2s;
 }
 
 .ball-jump {
-    animation: ballJump 0.3s ease-out;
+    animation: jumpBall 0.25s ease-out;
 }
 
-@keyframes ballJump {
+@keyframes jumpBall {
     0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-20px); }
-}
-
-.titulo {
-    z-index: 1000;
-    font-size: 1.2rem;
-    text-shadow: 0 0 5px #000;
+    50% { transform: translateY(-25px) scale(1.1); }
 }
