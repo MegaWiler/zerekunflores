@@ -125,4 +125,49 @@ body {
     border-radius: 50% 50% 0 50%;
     transform-origin: bottom right;
     opacity: 0.9;
-    /* Efecto de pétalos orgánicos org
+    /* Efecto de pétalos orgánicos orgánicos y con forma */
+}
+
+/* Distribución de pétalos circulares orgánicos orgánicos */
+.flower__leaf--1 { transform: rotate(0deg) scale(1.1); }
+.flower__leaf--2 { transform: rotate(45deg); }
+.flower__leaf--3 { transform: rotate(90deg) scale(1.1); }
+.flower__leaf--4 { transform: rotate(135deg); }
+.flower__leaf--5 { transform: rotate(180deg) scale(1.1); }
+.flower__leaf--6 { transform: rotate(225deg); }
+.flower__leaf--7 { transform: rotate(270deg) scale(1.1); }
+.flower__leaf--8 { transform: rotate(315deg); }
+
+.flower__white-circle {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: #5d4037;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+}
+
+/* --- ANIMACIONES --- */
+@keyframes rgbShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Animación de salto de la bola (palabra a palabra) */
+.ball-jump {
+    animation: quickJump 0.2s ease-out;
+}
+
+@keyframes quickJump {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+/* Brote: cuando el body tiene "not-loaded", las flores están abajo */
+.not-loaded .flower {
+    transform: translateY(100vh);
+}
