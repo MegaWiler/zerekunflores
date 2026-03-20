@@ -1,52 +1,42 @@
-:root {
-  --color-bg: #000222;
-  --color-leaf: #f7ff08;
-  --color-stem: #14757a;
-}
-
 body {
-  background-color: var(--color-bg);
-  margin: 0;
-  overflow: hidden;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  height: 100vh;
+    margin: 0;
+    background-color: #000;
+    overflow: hidden;
 }
 
-.flowers {
-  position: relative;
-  transform: scale(0.8);
-  z-index: 5;
+.night {
+    position: fixed;
+    width: 100%; height: 100%;
+    background: radial-gradient(circle, #1b2735 0%, #090a0f 100%);
+    z-index: 1;
 }
 
-.flower {
-  position: absolute;
-  bottom: 10vmin;
-  transform-origin: bottom center;
+.titulo-principal {
+    position: absolute;
+    top: 50px;
+    width: 100%;
+    text-align: center;
+    color: white;
+    z-index: 100;
+    font-family: cursive;
 }
 
-.flower--1 { left: 10vmin; animation: moving-flower-1 4s linear infinite; }
-.flower--2 { left: -10vmin; animation: moving-flower-2 4s linear infinite; }
-.flower--3 { left: -25vmin; animation: moving-flower-3 4s linear infinite; }
-
-.flower__leaf {
-  position: absolute;
-  bottom: 0;
-  width: 8vmin;
-  height: 11vmin;
-  border-radius: 51% 49% 47% 53% / 44% 45% 55% 56%;
-  background-color: var(--color-leaf);
-  transform-origin: bottom center;
+#lyrics-container {
+    position: fixed;
+    bottom: 100px;
+    width: 100%;
+    text-align: center;
+    z-index: 200;
 }
 
-.flower__line {
-  height: 50vmin;
-  width: 1.5vmin;
-  background-image: linear-gradient(to top, #14757a, #39c6d6);
+#lyrics span {
+    font-size: 2rem;
+    color: rgba(255,255,255,0.2);
+    font-weight: bold;
+    transition: 0.3s;
 }
 
-@keyframes moving-flower-1 {
-  0%, 100% { transform: rotate(3deg); }
-  50% { transform: rotate(-3deg); }
+#lyrics span.highlight {
+    color: yellow;
+    text-shadow: 0 0 15px yellow;
 }
