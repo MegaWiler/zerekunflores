@@ -1,55 +1,67 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="css/main.css" />
     <link rel="icon" href="img/flowers.png" type="image/x-icon" />
-    <title>Flower Karaoke</title>
+    <title>Flores para Zere 🌻</title>
     <style>
-  /* Barra superior de karaoke estilo flores amarillas */
-  #lyric-container {
-    position: fixed;
-    top: 30px;
-    width: 100%;
-    text-align: center;
-    z-index: 9999;
-    pointer-events: none;
-  }
-  #lyrics {
-    display: inline-block;
-    padding: 12px 25px;
-    background: rgba(0, 0, 0, 0.7); /* Sombreado oscuro profundo */
-    color: #FFD700; /* AMARILLO ORO para combinar con las flores */
-    font-family: 'Arial Black', sans-serif;
-    font-size: 1.6rem;
-    border-radius: 20px;
-    border: 1px solid rgba(255, 215, 0, 0.3); /* Bordecito sutil amarillo */
-    transition: all 0.3s ease;
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 1);
-    font-weight: bold;
-  }
-</style>
-  </head>
-  <body class="container">
-    <!-- El reproductor usa la nueva canción de Alec Benjamin -->
+        /* BARRA DE KARAOKE AMARILLA */
+        #lyric-container {
+            position: fixed;
+            top: 40px;
+            width: 100%;
+            text-align: center;
+            z-index: 9999;
+            pointer-events: none;
+        }
+
+        #lyrics {
+            display: inline-block;
+            padding: 15px 30px;
+            background: rgba(0, 0, 0, 0.75); /* Sombreado oscuro */
+            color: #FFD700; /* Amarillo Oro */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 1.6rem;
+            border-radius: 25px;
+            border: 2px solid rgba(255, 215, 0, 0.4);
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.9);
+            font-weight: bold;
+            transition: opacity 0.3s ease;
+        }
+
+        /* Título personalizado */
+        .titulo {
+            margin-top: 150px;
+            color: #fff;
+            text-align: center;
+            font-size: 1.2rem;
+            padding: 0 20px;
+        }
+    </style>
+</head>
+<body class="container">
+    <!-- Reproductor de audio con el nombre exacto de tu archivo -->
     <audio id="player" src="sound/Alec Benjamin Water Fountain (Lyrics).mp3" autoplay></audio>
-    
+
     <div id="lyric-container">
-      <div id="lyrics"></div>
+        <div id="lyrics">🎵 Preparando la música...</div>
     </div>
 
-    <h1 class="titulo">Estas flores amarillas son un reflejo de la alegría que traes a mi vida. <br> <br>
-      Gracias por las risas que me sacas con tus ocurrencias.</h1>
-  
+    <h1 class="titulo">
+        Estas flores amarillas son un reflejo de la alegría que traes a mi vida. <br><br>
+        Gracias por las risas que me sacas con tus ocurrencias.
+    </h1>
+
     <div class="night"></div>
-    <!-- ... Resto de la estructura de las flores igual ... -->
     <div class="flowers">
-        <!-- (Manten el código original de las flores aquí) -->
+        <!-- AQUÍ VA TODO EL CÓDIGO DE LAS FLORES (DIVS) QUE YA TENÍAS -->
+        <!-- No lo borres, solo pégalo aquí dentro -->
     </div>
 
     <script src="anim.js"></script>
     <script src="main.js"></script>
-  </body>
+</body>
 </html>
