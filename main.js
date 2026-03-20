@@ -41,11 +41,13 @@ var lyricsData = [
 ];
 
 // Función para activar todo al hacer CLIC en la pantalla
-document.body.addEventListener('click', function() {
-    audio.play().then(() => {
-        console.log("Reproduciendo...");
-    }).catch(err => console.log("Error al reproducir:", err));
-}, { once: true });
+// Añade esto al final de tu main.js
+document.addEventListener('click', function() {
+    var audio = document.getElementById("player");
+    audio.play().catch(function(error) {
+        console.log("El navegador bloqueó el audio: ", error);
+    });
+}, { once: true }); // Solo se ejecuta la primera vez que hace clic
 
 function updateLyrics() {
   var time = Math.floor(audio.currentTime);
