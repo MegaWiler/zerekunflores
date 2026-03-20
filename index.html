@@ -1,73 +1,87 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/main.css" />
-    <link rel="icon" href="img/flowers.png" type="image/x-icon" />
-    <title>Flores Amarillas</title>
-    <style>
-        /* Estilos críticos para evitar la pantalla blanca y mostrar la letra */
-        body {
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
-            background-color: #000; /* Fondo negro por defecto */
-        }
-        #lyrics-container {
-            position: fixed;
-            bottom: 80px;
-            width: 100%;
-            text-align: center;
-            z-index: 9999;
-            pointer-events: none;
-        }
-        #lyrics {
-            font-size: 1.8rem;
-            color: rgba(0, 255, 255, 0.5); /* Color base tenue */
-            text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
-            font-family: 'Arial', sans-serif;
-            font-weight: bold;
-            line-height: 1.4;
-        }
-        /* Clase para la palabra que se está cantando actualmente */
-        .highlight {
-            color: #fff200 !important;
-            text-shadow: 0 0 20px #fff200, 0 0 30px #ffcc00;
-            font-size: 2rem;
-            transition: all 0.2s ease;
-        }
-        .titulo {
-            position: absolute;
-            top: 5%;
-            width: 100%;
-            text-align: center;
-            color: #fff;
-            font-family: Arial;
-            z-index: 1000;
-            font-size: 1.2rem;
-        }
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="img/flowers.png" type="image/x-icon">
+    <title>Flores para Ti</title>
 </head>
 <body class="container">
-    <audio id="player" src="sound/ChristianBasso&HaienQiu-Flowers.mp3"></audio>
+    <audio id="player" src="track.mp3"></audio>
+
+    <div class="night"></div>
 
     <h1 class="titulo">
-        Estas flores amarillas son un reflejo de la alegría que traes a mi vida. <br><br>
-        Gracias por las risas que me sacas con tus ocurrencias.
+        Estas flores amarillas son un reflejo de la alegría que traes a mi vida. <br>
+        Gracias por las risas que me sacas.
     </h1>
 
     <div id="lyrics-container">
         <div id="lyrics"></div>
     </div>
 
-    <!-- El código de las flores se inyecta aquí -->
-    <div class="night"></div>
     <div class="flowers">
-        <!-- Copia aquí TODA la estructura de <div class="flower flower--1"> etc. de tu código original -->
-        <!-- Se asume que el resto de divs decorativos están presentes -->
+        <!-- Flor 1 -->
+        <div class="flower flower--1">
+            <div class="flower__leafs flower__leafs--1">
+                <div class="flower__leaf flower__leaf--1"></div>
+                <div class="flower__leaf flower__leaf--2"></div>
+                <div class="flower__leaf flower__leaf--3"></div>
+                <div class="flower__leaf flower__leaf--4"></div>
+                <div class="flower__white-circle"></div>
+                <div class="flower__light flower__light--1"></div>
+                <div class="flower__light flower__light--2"></div>
+                <div class="flower__light flower__light--3"></div>
+                <div class="flower__light flower__light--4"></div>
+                <div class="flower__light flower__light--5"></div>
+                <div class="flower__light flower__light--6"></div>
+                <div class="flower__light flower__light--7"></div>
+                <div class="flower__light flower__light--8"></div>
+            </div>
+            <div class="flower__line">
+                <div class="flower__line__leaf flower__line__leaf--1"></div>
+                <div class="flower__line__leaf flower__line__leaf--2"></div>
+                <div class="flower__line__leaf flower__line__leaf--3"></div>
+                <div class="flower__line__leaf flower__line__leaf--4"></div>
+                <div class="flower__line__leaf flower__line__leaf--5"></div>
+                <div class="flower__line__leaf flower__line__leaf--6"></div>
+            </div>
+        </div>
+
+        <!-- Flor 2 -->
+        <div class="flower flower--2">
+            <div class="flower__leafs flower__leafs--2">
+                <div class="flower__leaf flower__leaf--1"></div>
+                <div class="flower__leaf flower__leaf--2"></div>
+                <div class="flower__leaf flower__leaf--3"></div>
+                <div class="flower__leaf flower__leaf--4"></div>
+                <div class="flower__white-circle"></div>
+            </div>
+            <div class="flower__line">
+                <div class="flower__line__leaf flower__line__leaf--1"></div>
+                <div class="flower__line__leaf flower__line__leaf--2"></div>
+            </div>
+        </div>
+
+        <!-- Flor 3 -->
+        <div class="flower flower--3">
+            <div class="flower__leafs flower__leafs--3">
+                <div class="flower__leaf flower__leaf--1"></div>
+                <div class="flower__leaf flower__leaf--2"></div>
+                <div class="flower__leaf flower__leaf--3"></div>
+                <div class="flower__leaf flower__leaf--4"></div>
+                <div class="flower__white-circle"></div>
+            </div>
+            <div class="flower__line">
+                <div class="flower__line__leaf flower__line__leaf--1"></div>
+                <div class="flower__line__leaf flower__line__leaf--2"></div>
+            </div>
+        </div>
     </div>
 
+    <script src="anim.js"></script>
     <script src="main.js"></script>
 </body>
 </html>
