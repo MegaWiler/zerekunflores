@@ -1,20 +1,19 @@
-/* --- FONDO DE ESTRELLAS --- */
+/* --- FONDO DE ESTRELLAS Y CONFIGURACIÓN GENERAL --- */
 body {
     background-color: #000;
     background-image: 
         radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 10px),
-        radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 5px),
-        radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 10px);
-    background-size: 550px 550px, 350px 350px, 250px 250px;
+        radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 5px);
+    background-size: 550px 550px, 350px 350px;
     margin: 0;
     height: 100vh;
     overflow: hidden;
     display: flex;
     justify-content: center;
-    align-items: flex-end;
+    align-items: flex-end; /* Las flores nacen de abajo */
 }
 
-/* --- TÍTULO --- */
+/* --- TÍTULO INICIAL --- */
 .titulo-inicial {
     position: fixed;
     top: 30px;
@@ -38,14 +37,18 @@ body {
     z-index: 200;
 }
 
+/* La esfera RGB: tamaño, forma y gradiente animado */
 #rgb-ball {
-    width: 20px;
-    height: 20px;
+    width: 25px;
+    height: 25px;
     border-radius: 50%;
-    background: linear-gradient(45deg, #ff0000, #00ff00, #0000ff);
+    background: linear-gradient(45deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff);
     background-size: 200% 200%;
-    opacity: 0; /* Lo activa JS al hacer clic */
-    animation: rgbShift 2s linear infinite;
+    box-shadow: 0 0 15px currentColor;
+    opacity: 0; /* JS la activa al clic */
+    animation: rgbShift 3s linear infinite;
+    position: relative; /* Importante para el salto */
+    transition: left 0.1s ease-out, opacity 0.3s; /* Movimiento suave entre palabras */
     margin-bottom: 10px;
 }
 
@@ -58,18 +61,24 @@ body {
     text-align: center;
     min-height: 2.5rem;
     opacity: 0;
-    transition: opacity 0.3s;
 }
 
-/* --- DISEÑO DE LAS FLORES --- */
+/* Estilos para las palabras (se añaden por JS) */
+.word {
+    position: relative;
+    display: inline-block;
+    padding: 0 4px; /* Separación entre palabras */
+}
+
+/* --- DISEÑO DE LA FLOR ORGÁNICA (De tu imagen) --- */
 .flowers {
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
+    position: relative;
     width: 100%;
     height: 100%;
-    position: absolute;
-    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    bottom: -10px;
 }
 
 .flower {
@@ -78,21 +87,31 @@ body {
     transition: transform 3s ease-out; /* Velocidad del brote */
 }
 
-/* Brote: cuando el body tiene "not-loaded", las flores están abajo */
-.not-loaded .flower {
-    transform: translateY(100vh);
-}
-
+/* Tallo: degradado azulado y hojas orgánicas */
 .flower__line {
     width: 5px;
     height: 280px;
-    background-image: linear-gradient(to top, #000, #054d5e, #150e50);
+    background-image: linear-gradient(to top, rgba(0,255,255,0.1), #054d5e, #150e50);
     border-radius: 5px;
+    position: relative;
 }
 
+/* Las hojitas verdes orgánicas en el tallo */
+.flower__line__leaf {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background-color: #4caf50;
+    border-radius: 50% 50% 50% 0;
+    opacity: 0.8;
+}
+.flower__line__leaf--1 { top: 30%; left: -10px; transform: rotate(-20deg); }
+.flower__line__leaf--2 { top: 60%; left: 0; transform: rotate(160deg); }
+
+/* Pétalos orgánicos */
 .flower__leafs {
     position: absolute;
-    top: 0;
+    top: -280px; /* Ajusta a la punta del tallo */
     left: 50%;
     transform: translate(-50%, -50%);
 }
@@ -106,42 +125,4 @@ body {
     border-radius: 50% 50% 0 50%;
     transform-origin: bottom right;
     opacity: 0.9;
-}
-
-/* Pétalos circulares */
-.flower__leaf--1 { transform: rotate(0deg); }
-.flower__leaf--2 { transform: rotate(45deg); }
-.flower__leaf--3 { transform: rotate(90deg); }
-.flower__leaf--4 { transform: rotate(135deg); }
-.flower__leaf--5 { transform: rotate(180deg); }
-.flower__leaf--6 { transform: rotate(225deg); }
-.flower__leaf--7 { transform: rotate(270deg); }
-.flower__leaf--8 { transform: rotate(315deg); }
-
-.flower__white-circle {
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    background: #5d4037;
-    border-radius: 50%;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 10;
-}
-
-/* --- ANIMACIONES EXTRA --- */
-@keyframes rgbShift {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
-
-.ball-jump {
-    animation: jump 0.3s ease-out;
-}
-
-@keyframes jump {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-20px); }
-}
+    /* Efecto de pétalos orgánicos org
