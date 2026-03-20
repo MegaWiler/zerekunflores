@@ -1,79 +1,39 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/main.css" />
-    <link rel="icon" href="img/flowers.png" type="image/x-icon" />
-    <title>Flower</title>
-    <style>
-        /* Estilo para el karaoke */
-        #lyrics {
-            position: fixed;
-            top: 50px;
-            width: 100%;
-            text-align: center;
-            color: #FFD700;
-            font-size: 1.8rem;
-            z-index: 1000;
-            font-family: Arial, sans-serif;
-            text-shadow: 2px 2px 4px #000;
-        }
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/main.css">
+    <title>Flores Amarillas</title>
 </head>
 <body class="container">
-<audio id="player" src="track.mp3" preload="auto"></audio>
-    
-    <h1 class="titulo">
-        Estas flores amarillas son un reflejo de la alegría que traes a mi vida. <br><br>
-        Gracias por las risas que me sacas con tus ocurrencias.
-    </h1>
-  
-    <div class="night"></div>
-    <div class="flowers">
-      <!-- Estructura de flores (He mantenido tus contenedores principales) -->
-      <div class="flower flower--1">
-        <div class="flower__leafs flower__leafs--1">
-          <div class="flower__leaf flower__leaf--1"></div>
-          <div class="flower__leaf flower__leaf--2"></div>
-          <div class="flower__leaf flower__leaf--3"></div>
-          <div class="flower__leaf flower__leaf--4"></div>
-          <div class="flower__white-circle"></div>
-        </div>
-        <div class="flower__line"></div>
-      </div>
-
-      <div class="flower flower--2">
-        <div class="flower__leafs flower__leafs--2">
-          <div class="flower__leaf flower__leaf--1"></div>
-          <div class="flower__leaf flower__leaf--2"></div>
-          <div class="flower__leaf flower__leaf--3"></div>
-          <div class="flower__leaf flower__leaf--4"></div>
-          <div class="flower__white-circle"></div>
-        </div>
-        <div class="flower__line"></div>
-      </div>
-
-      <div class="flower flower--3">
-        <div class="flower__leafs flower__leafs--3">
-          <div class="flower__leaf flower__leaf--1"></div>
-          <div class="flower__leaf flower__leaf--2"></div>
-          <div class="flower__leaf flower__leaf--3"></div>
-          <div class="flower__leaf flower__leaf--4"></div>
-          <div class="flower__white-circle"></div>
-        </div>
-        <div class="flower__line"></div>
-      </div>
-
-      <!-- Otros elementos de césped y crecimiento -->
-      <div class="growing-grass">
-          <div class="flower__grass flower__grass--1"></div>
-          <div class="flower__grass flower__grass--2"></div>
-      </div>
+    <div class="titulo">
+        <h1>Haz clic para que florezca la música 🌻</h1>
     </div>
 
-  <script src="anim.js"></script>
-<script src="main.js"></script>
+    <!-- El reproductor de audio apuntando a tracker.mp3 -->
+    <audio id="player" src="./tracker.mp3" preload="auto"></audio>
+
+    <div class="flowers">
+        <!-- Aquí va el código de tus flores (divs de flower, leaf, etc.) -->
+        <div class="flower flower--1">
+            <div class="flower__leafs flower__leafs--1">
+                <div class="flower__leaf flower__leaf--1"></div>
+                <div class="flower__leaf flower__leaf--2"></div>
+                <div class="flower__leaf flower__leaf--3"></div>
+                <div class="flower__leaf flower__leaf--4"></div>
+                <div class="flower__white-circle"></div>
+            </div>
+            <div class="flower__line"></div>
+        </div>
+        <!-- ... puedes repetir los bloques de flores que ya tenías ... -->
+    </div>
+
+    <!-- Capa para mostrar la letra -->
+    <div id="lyrics" style="position: fixed; bottom: 15%; width: 100%; text-align: center; color: #fff; font-size: 1.5rem; text-shadow: 2px 2px 4px #000; opacity: 0; transition: opacity 0.5s;"></div>
+
+    <script src="anim.js"></script>
+    <script src="main.js"></script>
 </body>
 </html>
