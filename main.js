@@ -5,6 +5,7 @@ window.onload = () => {
 var audio = document.getElementById("player");
 var lyrics = document.querySelector("#lyrics");
 
+// LETRA COMPLETA SINCRONIZADA
 var lyricsData = [
   { text: "She told me that she loved me by the water fountain", time: 14.36 },
   { text: "She told me that she loved me and she didn't love him", time: 17.62 },
@@ -62,8 +63,10 @@ function updateLyrics() {
   }
 }
 
+// Actualización cada 100ms para que sea fluido
 setInterval(updateLyrics, 100);
 
+// Función ocultar título
 function ocultarTitulo() {
   var titulo = document.querySelector(".titulo");
   if (titulo) {
