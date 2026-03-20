@@ -1,40 +1,163 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="icon" href="img/flowers.png" type="image/x-icon">
-    <title>Flowers</title>
+    <link rel="stylesheet" href="css/main.css">
+    <title>Para Eve 🌻</title>
+    <style>
+        /* Estilos del Karaoke */
+        #lyric-container {
+            position: fixed;
+            top: 50px;
+            width: 100%;
+            text-align: center;
+            z-index: 9999;
+            display: none; 
+        }
+        #lyrics {
+            display: inline-block;
+            padding: 15px 30px;
+            background: rgba(0, 0, 0, 0.85);
+            color: #FFD700;
+            font-family: 'Segoe UI', sans-serif;
+            font-size: 1.5rem;
+            border-radius: 30px;
+            border: 2px solid #FFD700;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px #000;
+        }
+
+        /* Pantalla de Inicio */
+        .inicio-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #000;
+            color: white;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 10000;
+            transition: opacity 1s ease;
+        }
+
+        .btn-azul {
+            background-color: #0022ff;
+            color: white;
+            border: none;
+            padding: 18px 40px;
+            font-size: 1.3rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            box-shadow: 0 0 25px rgba(0, 34, 255, 0.6);
+            margin-top: 20px;
+        }
+
+        .btn-azul:active {
+            transform: scale(0.95);
+        }
+
+        /* Escondemos las flores al inicio */
+        .not-loaded .flowers {
+            display: none;
+        }
+    </style>
 </head>
+<body class="not-loaded">
 
-<body>
-    <div id="lyric-container" style="position: fixed; top: 20px; width: 100%; text-align: center; z-index: 1000; font-family: Arial; font-size: 24px; color: white; text-shadow: 2px 2px 4px #000;">
-    <p id="lyrics">🎵 Reproduce la música para ver la letra...</p>
-</div>
-
-<!-- Asegúrate de tener tu etiqueta de audio así -->
-<audio id="player" src="sound/musica.mp3" preload="auto"></audio>
-    <div class="greetings">
-        <span>H</span>
-        <span>o</span>
-        <span>l</span>
-        <span>a</span>
-        <span>!</span>
-         <img src="img/mapache flor.jpg" alt="Mapañe saludando" style="height: 300px; vertical-align: middle; margin-left: 10px;">
-</div>
-    </div>
-    <div class="description">
-        <span>ESTE PEQUEÑO DETALLE ES PARA TI EVE :)</span>
-    </div>
-    <div class="button">
-        <button class="botones">
-            <a href="flower.html" style="color: #fff;">PRESIONA AQUÍ</a>
-        </button>
+    <!-- PANTALLA DE INICIO -->
+    <div id="pantalla-inicio" class="inicio-container">
+        <!-- Asegúrate que la imagen esté en esta ruta -->
+        <img src="img/racoon.png" alt="Mapache" style="max-width: 250px;">
+        <h2 style="font-family: sans-serif; margin-top: 20px;">ESTE PEQUEÑO DETALLE ES PARA TI EVE :)</h2>
+        <button id="btn-iniciar" class="btn-azul">PRESIONA AQUÍ</button>
     </div>
 
+    <!-- REPRODUCTOR (Carpeta sound, archivo musica.mp3) -->
+    <audio id="player" src="sound/musica.mp3"></audio>
+
+    <!-- KARAOKE -->
+    <div id="lyric-container">
+        <div id="lyrics"></div>
+    </div>
+
+    <!-- ESTRUCTURA DE FLORES -->
+    <div class="night"></div>
+    <div class="flowers">
+        <div class="flower flower--1">
+            <div class="flower__leafs flower__leafs--1">
+                <div class="flower__leaf flower__leaf--1"></div>
+                <div class="flower__leaf flower__leaf--2"></div>
+                <div class="flower__leaf flower__leaf--3"></div>
+                <div class="flower__leaf flower__leaf--4"></div>
+                <div class="flower__white-circle"></div>
+            </div>
+            <div class="flower__line"></div>
+        </div>
+        <div class="flower flower--2">
+            <div class="flower__leafs flower__leafs--2">
+                <div class="flower__leaf flower__leaf--1"></div>
+                <div class="flower__leaf flower__leaf--2"></div>
+                <div class="flower__leaf flower__leaf--3"></div>
+                <div class="flower__leaf flower__leaf--4"></div>
+                <div class="flower__white-circle"></div>
+            </div>
+            <div class="flower__line"></div>
+        </div>
+        <div class="flower flower--3">
+            <div class="flower__leafs flower__leafs--3">
+                <div class="flower__leaf flower__leaf--1"></div>
+                <div class="flower__leaf flower__leaf--2"></div>
+                <div class="flower__leaf flower__leaf--3"></div>
+                <div class="flower__leaf flower__leaf--4"></div>
+                <div class="flower__white-circle"></div>
+            </div>
+            <div class="flower__line"></div>
+        </div>
+    </div>
+
+    <script>
+        const btn = document.getElementById('btn-iniciar');
+        const pantalla = document.getElementById('pantalla-inicio');
+        const audio = document.getElementById('player');
+        const lyricsCont = document.getElementById('lyric-container');
+        const lyricsText = document.getElementById('lyrics');
+
+        // Sincronización de la letra (segundos)
+        const lyricsData = [
+            { text: "She told me that she loved me by the water fountain", time: 14 },
+            { text: "She told me that she loved me and she didn't love him", time: 17 },
+            { text: "And that was really lovely 'cause it was innocent", time: 21 },
+            { text: "But now she's got a cup with something else in it", time: 25 },
+            { text: "Too young... I was too young 🌻", time: 78 }
+        ];
+
+        btn.addEventListener('click', () => {
+            // Iniciar todo
+            audio.play();
+            pantalla.style.opacity = '0';
+            
+            setTimeout(() => {
+                pantalla.style.display = 'none';
+                lyricsCont.style.display = 'block';
+                document.body.classList.remove("not-loaded");
+            }, 1000);
+        });
+
+        audio.addEventListener('timeupdate', () => {
+            let time = audio.currentTime;
+            let line = lyricsData.find((l, i) => time >= l.time && (!lyricsData[i+1] || time < lyricsData[i+1].time));
+            
+            if (line) {
+                lyricsText.innerText = line.text;
+                lyricsText.style.opacity = 1;
+            }
+        });
+    </script>
 </body>
-
 </html>
