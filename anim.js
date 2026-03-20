@@ -1,5 +1,3 @@
 window.onload = () => {
-    setTimeout(() => {
-        document.body.classList.remove("not-loaded");
-    }, 500);
+    document.body.classList.remove("not-loaded");
 };
