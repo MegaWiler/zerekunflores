@@ -1,1 +1,23 @@
+/* Limpieza de márgenes */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
+/* Asegurar que las flores se vean bien en móviles */
+@media screen and (max-width: 600px) {
+    .flower {
+        margin: 0 10px;
+        transform: scale(0.7);
+    }
+    #lyrics {
+        font-size: 1.2rem;
+    }
+}
+
+/* Clase para ocultar el título después de un tiempo */
+.fade-out {
+    opacity: 0;
+    transition: opacity 2s ease-in-out;
+}
