@@ -1,6 +1,6 @@
-// anim.js
 window.onload = () => {
-    // Elimina la clase que evita que las flores carguen
+    // Quita las clases que bloquean la animación
+    document.body.classList.remove("not-loaded");
     document.body.classList.remove("container");
-    console.log("Animaciones de flores activadas");
+    console.log("Animación de flores iniciada");
 };
