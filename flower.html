@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/main.css" />
-    <link rel="icon" href="img/flowers.png" type="image/x-icon" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="icon" href="img/flowers.png" type="image/x-icon">
     <title>Flores para Zere 🌻</title>
     <style>
-        /* BARRA DE KARAOKE AMARILLA */
         #lyric-container {
             position: fixed;
             top: 40px;
@@ -17,37 +16,42 @@
             z-index: 9999;
             pointer-events: none;
         }
-
         #lyrics {
             display: inline-block;
             padding: 15px 30px;
-            background: rgba(0, 0, 0, 0.75); /* Sombreado oscuro */
-            color: #FFD700; /* Amarillo Oro */
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: rgba(0, 0, 0, 0.75);
+            color: #FFD700;
+            font-family: 'Segoe UI', sans-serif;
             font-size: 1.6rem;
             border-radius: 25px;
             border: 2px solid rgba(255, 215, 0, 0.4);
             text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.9);
             font-weight: bold;
             transition: opacity 0.3s ease;
+            opacity: 0;
         }
-
-        /* Título personalizado */
         .titulo {
-            margin-top: 150px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             color: #fff;
             text-align: center;
-            font-size: 1.2rem;
-            padding: 0 20px;
+            font-size: 1.5rem;
+            width: 80%;
+            z-index: 10;
+        }
+        @keyframes fadeOut {
+            from { opacity: 1; }
+            to { opacity: 0; }
         }
     </style>
 </head>
 <body class="container">
-    <!-- Reproductor de audio con el nombre exacto de tu archivo -->
     <audio id="player" src="sound/Alec Benjamin Water Fountain (Lyrics).mp3" autoplay></audio>
 
     <div id="lyric-container">
-        <div id="lyrics">🎵 Preparando la música...</div>
+        <div id="lyrics"></div>
     </div>
 
     <h1 class="titulo">
@@ -56,14 +60,46 @@
     </h1>
 
     <div class="night"></div>
-  <div class="flowers">
-    <!-- Verifica que estos divs sigan aquí -->
-    <div class="flower flower--1">...</div>
-    <div class="flower flower--2">...</div>
-    <div class="flower flower--3">...</div>
-    <!-- ... etc ... -->
-</div>
-  
+    
+    <div class="flowers">
+        <!-- Flor 1 -->
+        <div class="flower flower--1">
+            <div class="flower__leafs flower__leafs--1">
+                <div class="flower__leaf flower__leaf--1"></div>
+                <div class="flower__leaf flower__leaf--2"></div>
+                <div class="flower__leaf flower__leaf--3"></div>
+                <div class="flower__leaf flower__leaf--4"></div>
+                <div class="flower__white-circle"></div>
+            </div>
+            <div class="flower__line"></div>
+        </div>
+        <!-- Flor 2 -->
+        <div class="flower flower--2">
+            <div class="flower__leafs flower__leafs--2">
+                <div class="flower__leaf flower__leaf--1"></div>
+                <div class="flower__leaf flower__leaf--2"></div>
+                <div class="flower__leaf flower__leaf--3"></div>
+                <div class="flower__leaf flower__leaf--4"></div>
+                <div class="flower__white-circle"></div>
+            </div>
+            <div class="flower__line"></div>
+        </div>
+        <!-- Flor 3 -->
+        <div class="flower flower--3">
+            <div class="flower__leafs flower__leafs--3">
+                <div class="flower__leaf flower__leaf--1"></div>
+                <div class="flower__leaf flower__leaf--2"></div>
+                <div class="flower__leaf flower__leaf--3"></div>
+                <div class="flower__leaf flower__leaf--4"></div>
+                <div class="flower__white-circle"></div>
+            </div>
+            <div class="flower__line"></div>
+        </div>
+        <div class="growing-grass">
+            <div class="flower__grass flower__grass--1"></div>
+            <div class="flower__grass flower__grass--2"></div>
+        </div>
+    </div>
 
     <script src="anim.js"></script>
     <script src="main.js"></script>
