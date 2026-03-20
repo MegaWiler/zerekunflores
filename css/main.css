@@ -1,23 +1,83 @@
-/* Limpieza de márgenes */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
-/* Asegurar que las flores se vean bien en móviles */
-@media screen and (max-width: 600px) {
-    .flower {
-        margin: 0 10px;
-        transform: scale(0.7);
-    }
-    #lyrics {
-        font-size: 1.2rem;
-    }
+:root {
+  --color-bg: #000222;
+  --color-glass: #102e5c;
+  --color-water: #153a77;
 }
 
-/* Clase para ocultar el título después de un tiempo */
-.fade-out {
-    opacity: 0;
-    transition: opacity 2s ease-in-out;
+body {
+  background-color: var(--color-bg);
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.flowers {
+  position: relative;
+  transform: scale(0.9);
+}
+
+.flower {
+  position: absolute;
+  bottom: 10vmin;
+  transform-origin: bottom center;
+  z-index: 10;
+}
+
+.flower--1 { left: 5vmin; animation: moving-flower-1 4s linear infinite; }
+.flower--2 { left: -5vmin; animation: moving-flower-2 4s linear infinite; }
+.flower--3 { left: -15vmin; animation: moving-flower-3 4s linear infinite; }
+
+.flower__leafs {
+  position: relative;
+  animation: blooming-flower 2s backwards;
+}
+
+.flower__leaf {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 8vmin;
+  height: 11vmin;
+  border-radius: 51% 49% 47% 53% / 44% 45% 55% 56%;
+  background-color: #f7ff08;
+  background-image: linear-gradient(to top, #e4ed11, #f7ff08);
+  transform-origin: bottom center;
+  opacity: 0.9;
+  box-shadow: inset 0 0 2vmin rgba(255, 255, 255, 0.5);
+}
+
+.flower__white-circle {
+  position: absolute;
+  left: -3.5vmin;
+  top: -3vmin;
+  width: 9vmin;
+  height: 4vmin;
+  border-radius: 50%;
+  background-color: #fff;
+}
+
+.flower__line {
+  height: 55vmin;
+  width: 1.5vmin;
+  background-image: linear-gradient(to left, rgba(0, 0, 0, 0.2), transparent, rgba(255, 255, 255, 0.2)), linear-gradient(to top, transparent 10%, #14757a, #39c6d6);
+  box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.5);
+}
+
+@keyframes blooming-flower {
+  0% { transform: scale(0); }
+}
+
+@keyframes moving-flower-1 {
+  0%, 100% { transform: rotate(2deg); }
+  50% { transform: rotate(-2deg); }
 }
