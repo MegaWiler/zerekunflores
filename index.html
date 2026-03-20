@@ -56,37 +56,37 @@
             font-weight: bold;
             box-shadow: 0 0 25px rgba(0, 34, 255, 0.6);
             margin-top: 20px;
+            transition: transform 0.2s;
         }
 
         .btn-azul:active {
             transform: scale(0.95);
         }
 
-        /* Escondemos las flores al inicio */
-        .not-loaded .flowers {
-            display: none;
+        /* Forzar visualización de flores tras el clic */
+        body.flowers-visible .flowers {
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
         }
     </style>
 </head>
 <body class="not-loaded">
 
-    <!-- PANTALLA DE INICIO -->
     <div id="pantalla-inicio" class="inicio-container">
-        <!-- Asegúrate que la imagen esté en esta ruta -->
-        <img src="img/racoon.png" alt="Mapache" style="max-width: 250px;">
-        <h2 style="font-family: sans-serif; margin-top: 20px;">ESTE PEQUEÑO DETALLE ES PARA TI EVE :)</h2>
+        <img src="img/mapache flor.jpg" alt="Mapache" style="max-width: 250px; border-radius: 20px;">
+        <h2 style="font-family: sans-serif; margin-top: 20px; text-align: center; padding: 0 20px;">
+            ESTE PEQUEÑO DETALLE ES PARA TI EVE :)
+        </h2>
         <button id="btn-iniciar" class="btn-azul">PRESIONA AQUÍ</button>
     </div>
 
-    <!-- REPRODUCTOR (Carpeta sound, archivo musica.mp3) -->
     <audio id="player" src="sound/musica.mp3"></audio>
 
-    <!-- KARAOKE -->
     <div id="lyric-container">
         <div id="lyrics"></div>
     </div>
 
-    <!-- ESTRUCTURA DE FLORES -->
     <div class="night"></div>
     <div class="flowers">
         <div class="flower flower--1">
@@ -128,27 +128,34 @@
         const lyricsCont = document.getElementById('lyric-container');
         const lyricsText = document.getElementById('lyrics');
 
-        // Sincronización de la letra (segundos)
+        // Letra sincronizada (Water Fountain)
         const lyricsData = [
-            { text: "She told me that she loved me by the water fountain", time: 14 },
-            { text: "She told me that she loved me and she didn't love him", time: 17 },
-            { text: "And that was really lovely 'cause it was innocent", time: 21 },
-            { text: "But now she's got a cup with something else in it", time: 25 },
-            { text: "Too young... I was too young 🌻", time: 78 }
+            { text: "She told me that she loved me by the water fountain", time: 14.36 },
+            { text: "She told me that she loved me and she didn't love him", time: 17.62 },
+            { text: "And that was really lovely 'cause it was innocent", time: 21.35 },
+            { text: "But now she's got a cup with something else in it", time: 24.86 },
+            { text: "Too young... I was too young 🌻", time: 78.60 }
         ];
 
         btn.addEventListener('click', () => {
-            // Iniciar todo
-            audio.play();
+            // 1. Iniciar música
+            audio.play().catch(e => console.log("Error audio:", e));
+            
+            // 2. Desvanecer pantalla inicial
             pantalla.style.opacity = '0';
             
             setTimeout(() => {
                 pantalla.style.display = 'none';
                 lyricsCont.style.display = 'block';
+                
+                // 3. Activar flores (Quitamos clases de bloqueo y añadimos la de visibilidad)
                 document.body.classList.remove("not-loaded");
+                document.body.classList.remove("container");
+                document.body.classList.add("flowers-visible");
             }, 1000);
         });
 
+        // Sincronizar Karaoke
         audio.addEventListener('timeupdate', () => {
             let time = audio.currentTime;
             let line = lyricsData.find((l, i) => time >= l.time && (!lyricsData[i+1] || time < lyricsData[i+1].time));
