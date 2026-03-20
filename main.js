@@ -1,7 +1,7 @@
 const audio = document.getElementById("player");
 const lyrics = document.querySelector("#lyrics");
 
-// 1. LETRA SINCRONIZADA
+// 1. CONFIGURACIÓN DE LA LETRA
 const lyricsData = [
   { text: "She told me that she loved me by the water fountain", time: 14 },
   { text: "She told me that she loved me and she didn't love him", time: 17 },
@@ -15,30 +15,20 @@ const lyricsData = [
   { text: "Kissing her lips, and whispering in her ear", time: 46 },
   { text: "And she knows that she shouldn't listen", time: 50 },
   { text: "And that she should be with me by the water fountain", time: 54 },
-  { text: "She couldn't be at home in the night time because", time: 57 },
-  { text: "It made her feel alone, but at that time she was too young", time: 61 },
-  { text: "I was too young", time: 66 },
-  { text: "I should've built a home with a fountain for us", time: 71 },
-  { text: "The moment that she told me that she was in love", time: 75 },
   { text: "Too young... I was too young 🌻", time: 78 }
 ];
 
-// 2. FUNCIÓN DE REPRODUCCIÓN FORZADA
-function playMusic() {
-    audio.muted = false; // Quitar silencio
-    audio.volume = 1.0;  // Volumen al máximo
-    
+// 2. ACTIVAR MÚSICA CON CLIC (Solución al bloqueo del navegador)
+document.addEventListener("click", () => {
+    console.log("Intentando reproducir tracker.mp3...");
     audio.play().then(() => {
-        console.log("Reproduciendo track.mp3 con éxito");
+        console.log("Reproduciendo con éxito");
     }).catch(err => {
-        console.error("Error: El navegador sigue bloqueando o no encuentra track.mp3", err);
+        console.log("Error: Revisa que tracker.mp3 esté en la raíz de GitHub", err);
     });
-}
+}, { once: true });
 
-// Escuchar el clic en TODA la pantalla para activar el audio
-document.addEventListener("click", playMusic, { once: true });
-
-// 3. ACTUALIZAR LETRAS
+// 3. ACTUALIZACIÓN DE LETRA
 function updateLyrics() {
   let time = Math.floor(audio.currentTime);
   let currentLine = lyricsData.find((line, index) => {
@@ -54,13 +44,14 @@ function updateLyrics() {
   }
 }
 
-setInterval(updateLyrics, 300);
-
-// 4. OCULTAR TÍTULO
-setTimeout(() => {
+// 4. OCULTAR EL TÍTULO INICIAL
+function ocultarTitulo() {
   const titulo = document.querySelector(".titulo");
   if (titulo) {
     titulo.style.animation = "fadeOut 3s ease-in-out forwards";
     setTimeout(() => { titulo.style.display = "none"; }, 3000);
   }
-}, 10000);
+}
+
+setInterval(updateLyrics, 300);
+setTimeout(ocultarTitulo, 8000);
