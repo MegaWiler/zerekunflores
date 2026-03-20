@@ -1,25 +1,68 @@
-var audio = document.getElementById("player");
-var lyricsText = document.getElementById("lyrics");
+// Sincronizar las letras con la canción
+var audio = document.querySelector("audio");
+var lyrics = document.querySelector("#lyrics");
 
+// Array de objetos con la letra solicitada
 var lyricsData = [
-  { text: "She told me that she loved me by the water fountain", time: 14.36 },
-  { text: "She told me that she loved me and she didn't love him", time: 17.62 },
-  { text: "And that was really lovely 'cause it was innocent", time: 21.35 },
-  { text: "But now she's got a cup with something else in it", time: 24.86 },
-  { text: "Too young... I was too young 🌻", time: 78.60 }
+  { text: "At the time", time: 15 },
+  { text: "The whisper of birds", time: 18 },
+  { text: "Lonely before the sun cried", time: 27 },
+  { text: "Fell from the sky", time: 32 },
+  { text: "Like water drops", time: 33 },
+  { text: "Where I'm now? I don't know why", time: 41 },
+  { text: "Nice butterflies in my hands", time: 47 },
+  { text: "Too much light for twilight", time: 54 },
+  { text: "In the mood for the flowers love", time: 59 },
+  { text: "That vision", time: 67 },
+  { text: "Really strong, blew my mind", time: 72 },
+  { text: "Silence Let me see what it was", time: 78 },
+  { text: "I only want to live in clouds", time: 83 },
+  { text: "Where I'm now? I don't know why", time: 91 },
+  { text: "Nice butterflies in my hands", time: 97 },
+  { text: "Too much light for twilight", time: 104 },
+  { text: "In the mood for the flowers love", time: 108 },
+  { text: "At the time", time: 144 },
+  { text: "The whisper of birds", time: 148 },
+  { text: "Lonely before the sun cried", time: 153 },
+  { text: "Fell from the sky", time: 158 },
+  { text: "Like water drops", time: 164 },
+  { text: "Where I'm now? I don't know why", time: 169 },
+  { text: "Nice butterflies in my hands", time: 176 },
+  { text: "Too much light for twilight", time: 183 },
+  { text: "In the mood for the flowers", time: 188 },
+  { text: "Love.", time: 140 }, // Nota: En tus comandos estaba en 140, asegúrate si es correcto.
 ];
 
-audio.addEventListener('timeupdate', () => {
-    var time = audio.currentTime;
-    var currentLine = lyricsData.find((line, index) => {
-        let nextLine = lyricsData[index + 1];
-        return time >= line.time && (!nextLine || time < nextLine.time);
-    });
+// Función para actualizar las letras
+function updateLyrics() {
+  var time = Math.floor(audio.currentTime);
+  var currentLine = lyricsData.find(
+    (line) => time >= line.time && time < line.time + 6
+  );
 
-    if (currentLine) {
-        lyricsText.innerHTML = currentLine.text;
-        lyricsText.style.opacity = 1;
-    } else {
-        lyricsText.style.opacity = 0;
-    }
-});
+  if (currentLine) {
+    var fadeInDuration = 0.1; 
+    var opacity = Math.min(1, (time - currentLine.time) / fadeInDuration);
+    lyrics.style.opacity = opacity;
+    lyrics.innerHTML = currentLine.text;
+  } else {
+    lyrics.style.opacity = 0;
+    lyrics.innerHTML = "";
+  }
+}
+
+setInterval(updateLyrics, 1000);
+
+// Función para ocultar el título después de 216 segundos
+function ocultarTitulo() {
+  var titulo = document.querySelector(".titulo");
+  if (titulo) {
+    titulo.style.animation = "fadeOut 3s ease-in-out forwards";
+    setTimeout(function () {
+      titulo.style.display = "none";
+    }, 3000);
+  }
+}
+
+// Llama a la función después de 216 segundos
+setTimeout(ocultarTitulo, 216000);
