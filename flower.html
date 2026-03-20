@@ -1,54 +1,78 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/main.css">
-    <title>Flores Amarillas 🌻</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="icon" href="img/flowers.png" type="image/x-icon" />
+    <title>Flower</title>
     <style>
-        #lyric-container {
-            position: fixed;
-            top: 50px; width: 100%; text-align: center; z-index: 9999;
-        }
+        /* Estilo para el karaoke */
         #lyrics {
-            display: inline-block; padding: 15px 30px;
-            background: rgba(0, 0, 0, 0.8); color: #FFD700;
-            font-size: 1.5rem; border-radius: 30px; border: 2px solid #FFD700;
-            font-weight: bold; font-family: sans-serif;
-        }
-        #mensaje-especial {
-            position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
-            color: white; text-align: center; font-size: 1.8rem; width: 80%;
-            z-index: 5000; font-family: sans-serif; transition: opacity 2s;
+            position: fixed;
+            top: 50px;
+            width: 100%;
+            text-align: center;
+            color: #FFD700;
+            font-size: 1.8rem;
+            z-index: 1000;
+            font-family: Arial, sans-serif;
+            text-shadow: 2px 2px 4px #000;
         }
     </style>
 </head>
 <body class="container">
-    <div id="mensaje-especial">
+    <audio src="sound/ChristianBasso&HaienQiu-Flowers.mp3" autoplay></audio>
+    
+    <div id="lyrics"></div>
+
+    <h1 class="titulo">
         Estas flores amarillas son un reflejo de la alegría que traes a mi vida. <br><br>
-        Gracias por las risas que me sacas con tus ocurrencias. 🌻
-    </div>
-
-    <audio id="player" src="sound/musica.mp3" autoplay></audio>
-
-    <div id="lyric-container">
-        <div id="lyrics"></div>
-    </div>
-
+        Gracias por las risas que me sacas con tus ocurrencias.
+    </h1>
+  
     <div class="night"></div>
     <div class="flowers">
-        <!-- Flor 1 -->
-        <div class="flower flower--1">
-            <div class="flower__leafs flower__leafs--1">
-                <div class="flower__leaf flower__leaf--1"></div>
-                <div class="flower__leaf flower__leaf--2"></div>
-                <div class="flower__leaf flower__leaf--3"></div>
-                <div class="flower__leaf flower__leaf--4"></div>
-                <div class="flower__white-circle"></div>
-            </div>
-            <div class="flower__line"></div>
+      <!-- Estructura de flores (He mantenido tus contenedores principales) -->
+      <div class="flower flower--1">
+        <div class="flower__leafs flower__leafs--1">
+          <div class="flower__leaf flower__leaf--1"></div>
+          <div class="flower__leaf flower__leaf--2"></div>
+          <div class="flower__leaf flower__leaf--3"></div>
+          <div class="flower__leaf flower__leaf--4"></div>
+          <div class="flower__white-circle"></div>
         </div>
-        <!-- Copia aquí los demás bloques de flores (flower--2, flower--3) si los tienes -->
+        <div class="flower__line"></div>
+      </div>
+
+      <div class="flower flower--2">
+        <div class="flower__leafs flower__leafs--2">
+          <div class="flower__leaf flower__leaf--1"></div>
+          <div class="flower__leaf flower__leaf--2"></div>
+          <div class="flower__leaf flower__leaf--3"></div>
+          <div class="flower__leaf flower__leaf--4"></div>
+          <div class="flower__white-circle"></div>
+        </div>
+        <div class="flower__line"></div>
+      </div>
+
+      <div class="flower flower--3">
+        <div class="flower__leafs flower__leafs--3">
+          <div class="flower__leaf flower__leaf--1"></div>
+          <div class="flower__leaf flower__leaf--2"></div>
+          <div class="flower__leaf flower__leaf--3"></div>
+          <div class="flower__leaf flower__leaf--4"></div>
+          <div class="flower__white-circle"></div>
+        </div>
+        <div class="flower__line"></div>
+      </div>
+
+      <!-- Otros elementos de césped y crecimiento -->
+      <div class="growing-grass">
+          <div class="flower__grass flower__grass--1"></div>
+          <div class="flower__grass flower__grass--2"></div>
+      </div>
     </div>
 
     <script src="anim.js"></script>
