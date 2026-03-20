@@ -3,45 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Cargamos ambos archivos de la carpeta css -->
+    <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/style.css">
     <title>Flores para Eve 🌻</title>
     <style>
-        /* Estilos de emergencia para el Karaoke (por si acaso) */
         #lyrics {
             position: fixed;
             bottom: 12%;
             width: 100%;
             text-align: center;
-            color: #ffeb3b; /* Amarillo brillante */
+            color: #ffeb3b;
             font-family: 'Arial', sans-serif;
             font-size: 1.8rem;
             font-weight: bold;
             text-shadow: 2px 2px 8px #000;
             z-index: 9999;
-            pointer-events: none;
-            transition: opacity 0.5s ease;
             opacity: 0;
-        }
-        .instruccion-inicio {
-            position: fixed;
-            top: 20px;
-            width: 100%;
-            text-align: center;
-            color: white;
-            font-size: 1rem;
-            z-index: 10000;
-            background: rgba(0,0,0,0.5);
-            padding: 10px 0;
+            transition: opacity 0.5s ease;
         }
     </style>
 </head>
-<body class="container">
-    <div class="instruccion-inicio">Haz clic en cualquier parte para activar la música 🎵</div>
-
+<body class="not-loaded">
+    <!-- Música -->
     <audio id="player" src="tracker.mp3" preload="auto"></audio>
-
+    
+    <!-- Letra -->
     <div id="lyrics"></div>
 
+    <!-- Estructura de las Flores -->
     <div class="flowers">
         <div class="flower flower--1">
             <div class="flower__leafs flower__leafs--1">
@@ -49,10 +39,6 @@
                 <div class="flower__leaf flower__leaf--2"></div>
                 <div class="flower__leaf flower__leaf--3"></div>
                 <div class="flower__leaf flower__leaf--4"></div>
-                <div class="flower__leaf flower__leaf--5"></div>
-                <div class="flower__leaf flower__leaf--6"></div>
-                <div class="flower__leaf flower__leaf--7"></div>
-                <div class="flower__leaf flower__leaf--8"></div>
                 <div class="flower__white-circle"></div>
             </div>
             <div class="flower__line">
@@ -67,10 +53,6 @@
                 <div class="flower__leaf flower__leaf--2"></div>
                 <div class="flower__leaf flower__leaf--3"></div>
                 <div class="flower__leaf flower__leaf--4"></div>
-                <div class="flower__leaf flower__leaf--5"></div>
-                <div class="flower__leaf flower__leaf--6"></div>
-                <div class="flower__leaf flower__leaf--7"></div>
-                <div class="flower__leaf flower__leaf--8"></div>
                 <div class="flower__white-circle"></div>
             </div>
             <div class="flower__line">
@@ -85,10 +67,6 @@
                 <div class="flower__leaf flower__leaf--2"></div>
                 <div class="flower__leaf flower__leaf--3"></div>
                 <div class="flower__leaf flower__leaf--4"></div>
-                <div class="flower__leaf flower__leaf--5"></div>
-                <div class="flower__leaf flower__leaf--6"></div>
-                <div class="flower__leaf flower__leaf--7"></div>
-                <div class="flower__leaf flower__leaf--8"></div>
                 <div class="flower__white-circle"></div>
             </div>
             <div class="flower__line">
@@ -98,6 +76,7 @@
         </div>
     </div>
 
+    <!-- Scripts -->
     <script src="anim.js"></script>
     <script src="main.js"></script>
 </body>
