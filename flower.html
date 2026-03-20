@@ -4,34 +4,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/main.css">
-    <title>Flores Amarillas</title>
+    <title>Flores para Eve 🌻</title>
+    <style>
+        /* Estilos para el Karaoke */
+        #lyrics {
+            position: fixed;
+            bottom: 12%;
+            width: 100%;
+            text-align: center;
+            color: #ffeb3b; /* Amarillo brillante */
+            font-family: 'Arial', sans-serif;
+            font-size: 1.8rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 8px #000;
+            z-index: 9999;
+            pointer-events: none;
+            transition: opacity 0.5s ease;
+        }
+        .instruccion-inicio {
+            position: fixed;
+            top: 20px;
+            width: 100%;
+            text-align: center;
+            color: white;
+            font-size: 1rem;
+            z-index: 10000;
+            background: rgba(0,0,0,0.5);
+            padding: 10px 0;
+        }
+    </style>
 </head>
 <body class="container">
-    <div class="titulo">
-        <h1>Haz clic para que florezca la música 🌻</h1>
-    </div>
+    <div class="instruccion-inicio">Haz clic en cualquier parte para activar la música 🎵</div>
 
-    <!-- El reproductor de audio apuntando a tracker.mp3 -->
-    <audio id="player" src="./tracker.mp3" preload="auto"></audio>
+    <!-- REPRODUCTOR DE AUDIO -->
+    <audio id="player" src="tracker.mp3" preload="auto"></audio>
+
+    <div id="lyrics"></div>
 
     <div class="flowers">
-        <!-- Aquí va el código de tus flores (divs de flower, leaf, etc.) -->
-        <div class="flower flower--1">
-            <div class="flower__leafs flower__leafs--1">
-                <div class="flower__leaf flower__leaf--1"></div>
-                <div class="flower__leaf flower__leaf--2"></div>
-                <div class="flower__leaf flower__leaf--3"></div>
-                <div class="flower__leaf flower__leaf--4"></div>
-                <div class="flower__white-circle"></div>
-            </div>
-            <div class="flower__line"></div>
-        </div>
-        <!-- ... puedes repetir los bloques de flores que ya tenías ... -->
+        <!-- Tus flores se generarán aquí con anim.js -->
     </div>
-
-    <!-- Capa para mostrar la letra -->
-    <div id="lyrics" style="position: fixed; bottom: 15%; width: 100%; text-align: center; color: #fff; font-size: 1.5rem; text-shadow: 2px 2px 4px #000; opacity: 0; transition: opacity 0.5s;"></div>
 
     <script src="anim.js"></script>
     <script src="main.js"></script>
